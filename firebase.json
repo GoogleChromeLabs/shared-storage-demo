@@ -1,0 +1,78 @@
+{
+  "hosting": [
+    {
+      "site": "shared-storage-demo",
+      "public": "sites/home",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "home"
+        }
+      ]
+    },
+    {
+      "site": "shared-storage-demo-publisher-a",
+      "public": "sites/publisher-a",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "publisherA"
+        }
+      ]
+    },
+    {
+      "site": "shared-storage-demo-publisher-b",
+      "public": "sites/publisher-b",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "publisherB"
+        }
+      ]
+    },
+    {
+      "site": "shared-storage-demo-adtech",
+      "public": "sites/adtech",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "adtech"
+        }
+      ],
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "X-Allow-FLEDGE",
+              "value": "true"
+            },
+            {
+              "key": "Supports-Loading-Mode",
+              "value": "fenced-frame"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "emulators": {
+    "functions": {
+      "port": "5080"
+    },
+    "hosting": {
+      "host": "localhost",
+      "port": "8080"
+    },
+    "ui": {
+      "enabled": true
+    }
+  },
+  "functions": {
+    "source": "functions"
+  }
+}
