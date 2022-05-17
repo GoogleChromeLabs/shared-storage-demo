@@ -1,0 +1,15 @@
+<script src="frequency-cap.js"></script>
+<script>
+  // This button is for resetting the demo, and is not part of the core logic
+  function resetSharedStorage() {
+    window.sharedStorage.set('frequency-cap-count', '5')
+  }
+</script>
+<p>
+  <button onclick="resetSharedStorage()">
+    Reset frequency cap stored in Shared Storage
+  </button>
+</p>
+
+<!-- <iframe id="ad-iframe"></iframe> -->
+<fencedframe id="ad-fenced-frame" mode="opaque-ads"></fencedframe>
