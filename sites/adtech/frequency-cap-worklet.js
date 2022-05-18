@@ -1,9 +1,10 @@
-console.log('worklet!!!');
-
 class SelectURLOperation {
   async run(urls, data) {
     const storedCount = await this.sharedStorage.get('frequency-cap-count');
     const count = parseInt(storedCount, 10)
+
+    console.log(`urls = ${JSON.stringify(urls)}`)
+    console.log(`data = ${JSON.stringify(data)}`)
     console.log(`frequency-cap-count in shared storage is ${count}`)
 
     if (!count) {
@@ -17,4 +18,4 @@ class SelectURLOperation {
   }
 }
 
-registerURLSelectionOperation('frequency-cap', SelectURLOperation);
+register('frequency-cap', SelectURLOperation);
