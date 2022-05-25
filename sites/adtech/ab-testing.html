@@ -1,0 +1,22 @@
+<style>
+  #ad-slot {
+    height: 250px;
+  }
+</style>
+<script src="ab-testing.js"></script>
+<script>
+  // This button is for resetting the demo, and is not part of the core logic
+  function resetSharedStorage(group) {
+    window.sharedStorage.set('ab-testing-group', group);
+    console.log(`user added to ${group} group`);
+  }
+</script>
+
+<fencedframe id="ad-slot" mode="opaque-ads"></fencedframe>
+
+<p>Demo control</p>
+<div class="demo-buttons" style="display: block">
+  <button onclick="resetSharedStorage('control')">Add user to Control group</button>
+  <button onclick="resetSharedStorage('experiment-a')">Add user to Experiment A group</button>
+  <button onclick="resetSharedStorage('experiment-b')">Add user to Experiment B group</button>
+</div>

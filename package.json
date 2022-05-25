@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "lint": "npx prettier --write .",
-    "dev": "npm run kill-8080 && firebase emulators:start",
+    "dev": "firebase emulators:start",
     "shell": "firebase functions:shell",
     "deploy": "firebase deploy",
     "logs": "firebase functions:log",
