@@ -13,6 +13,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
+
 <html lang='en'>
 
 <head>
@@ -29,28 +30,11 @@
   <link rel='icon'
     href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>' />
   <link rel="stylesheet" href="demo.css" />
-  <script src="ab-testing.js"></script>
-  <script>
-    // This button is for resetting the demo, and is not part of the core logic
-    function resetSharedStorage(group) {
-      window.sharedStorage.set('ab-testing-group', group);
-      console.log(`user added to ${group} group`);
-    }
-  </script>
+  <script src="known-customer.js"></script>
 </head>
 
 <body>
-  <fencedframe id="ad-slot" mode="opaque-ads"></fencedframe>
-  <hr>
-  <div class="demo-control">
-    <p><b>Demo control</b></p>
-    <div class="demo-buttons">
-      <button class="mdl-button mdl-js-button mdl-button--raised demo-button" onclick="resetSharedStorage('control')">Add user to the "Control" group</button>
-      <button class="mdl-button mdl-js-button mdl-button--raised demo-button" onclick="resetSharedStorage('experiment-a')">Add user to the "Experiment A" group</button>
-      <button class="mdl-button mdl-js-button mdl-button--raised demo-button" onclick="resetSharedStorage('experiment-b')">Add user to the "Experiment B" group</button>
-    </div>
-  </div>
-
+  <fencedframe id="button-slot" mode="opaque-ads"></fencedframe>
 </body>
 
 </html>

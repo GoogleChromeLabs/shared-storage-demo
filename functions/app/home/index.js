@@ -24,17 +24,15 @@ require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 const app = setupView(express(), 'home');
 
 // Setup root route
-app.get('/:demoName', (req, res) => {
-  const { DEMO_HOME_URL, PUBLISHER_A_URL, PUBLISHER_B_URL, ADTECH_URL } = process.env;
-  let { demoName } = req.params;
-  demoName = demoName ?? 'index';
-  console.log({ demoName });
+app.get('/', (req, res) => {
+  const { DEMO_HOME_URL, PUBLISHER_A_URL, PUBLISHER_B_URL, ADTECH_URL, PAYMENT_PROVIDER_URL } = process.env;
 
-  res.render(demoName, {
+  res.render('index', {
     demoHomeUrl: DEMO_HOME_URL,
     publisherAUrl: PUBLISHER_A_URL,
     publisherBUrl: PUBLISHER_B_URL,
     adtechUrl: ADTECH_URL,
+    paymentProviderUrl: PAYMENT_PROVIDER_URL,
   });
 });
 

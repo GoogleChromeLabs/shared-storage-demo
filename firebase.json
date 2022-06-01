@@ -48,10 +48,6 @@
           "source": "**",
           "headers": [
             {
-              "key": "X-Allow-FLEDGE",
-              "value": "true"
-            },
-            {
               "key": "Supports-Loading-Mode",
               "value": "fenced-frame"
             }

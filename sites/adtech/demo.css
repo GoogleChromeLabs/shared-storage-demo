@@ -13,21 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-async function injectAd() {
-  const adtechUrl = window.location.host;
-  const ads = [`https://${adtechUrl}/ads/default-ad.html`, `https://${adtechUrl}/ads/example-ad.html`];
-
-  await window.sharedStorage.worklet.addModule('frequency-cap-worklet.js');
-  window.sharedStorage.set('frequency-cap-count', '5', {
-    ignoreIfPresent: true,
-  });
-
-  const opaqueURL = await window.sharedStorage.selectURL('frequency-cap', ads, {
-    data: { foo: 'bar' },
-  });
-
-  document.getElementById('ad-slot').src = opaqueURL;
+#ad-slot {
+  border: none;
+  height: 250px;
+  margin-bottom: 15px;
 }
 
-injectAd();
+#button-slot {
+  border: none;
+  height: 100px;
+}
+
+.demo-control {
+  padding: 10px;
+}
+
+.demo-buttons {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.demo-button {
+  margin-bottom: 10px;
+}

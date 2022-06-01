@@ -28,6 +28,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-body {
+
+.demo-container {
   margin: 50px;
+}
+
+a:link {
+  color: #8cb4ff;
+}
+
+a:visited {
+  color: #8cb4ff;
 }
