@@ -25,7 +25,7 @@ async function injectAd() {
   await window.sharedStorage.worklet.addModule('frequency-cap-worklet.js');
 
   // Set the initial frequency cap to 5
-  window.sharedStorage.set('frequency-cap-count', '5', {
+  window.sharedStorage.set('frequency-cap-count', 5, {
     ignoreIfPresent: true,
   });
 

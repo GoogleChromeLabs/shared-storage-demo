@@ -17,8 +17,7 @@
 class SelectURLOperation {
   async run(urls, data) {
     // Read the current frequency cap in shared storage
-    const storedCount = await this.sharedStorage.get('frequency-cap-count');
-    const count = parseInt(storedCount, 10);
+    const count = await this.sharedStorage.get('frequency-cap-count');
 
     // Log to console for the demo
     console.log(`urls = ${JSON.stringify(urls)}`);
