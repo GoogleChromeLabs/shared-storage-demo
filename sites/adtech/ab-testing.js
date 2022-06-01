@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// The hostname is is used to determine the usage of development localhost URL vs production URL
+// The hostname is used to determine the usage of development localhost URL vs production URL
 const adtechUrl = window.location.host;
 
 // Map the experiment groups to the URLs

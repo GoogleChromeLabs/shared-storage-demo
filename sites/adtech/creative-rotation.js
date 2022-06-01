@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// The hostname is is used to determine the usage of development localhost URL vs production URL
+// The hostname is used to determine the usage of development localhost URL vs production URL
 const adtechUrl = window.location.host;
 
 // Ad confg with the URL of the ad, a probability weight for rotation, and the clickthrough rate.
@@ -42,7 +42,7 @@ async function seedStorage() {
     ignoreIfPresent: true,
   });
 
-  await window.sharedStorage.set('creative-rotation-index', '0', {
+  await window.sharedStorage.set('creative-rotation-index', 0, {
     ignoreIfPresent: true,
   });
 }
