@@ -50,7 +50,7 @@ async function injectAd() {
 
   // Run the URL selection operation to select an ad based on the experiment group in shared storage
   const urls = EXPERIMENT_MAP.map(({ url }) => url);
-  const groups = EXPERIMENT_MAP.map(({ group }) => group)
+  const groups = EXPERIMENT_MAP.map(({ group }) => group);
   const opaqueURL = await window.sharedStorage.selectURL('ab-testing', urls, { data: groups });
 
   // Render the opaque URL into a fenced frame

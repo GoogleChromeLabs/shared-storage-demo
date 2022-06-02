@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
     publisherAUrl: PUBLISHER_A_URL,
     publisherBUrl: PUBLISHER_B_URL,
     adtechUrl: ADTECH_URL,
-    paymentProvider: PAYMENT_PROVIDER_URL
+    paymentProvider: PAYMENT_PROVIDER_URL,
   });
 });
 

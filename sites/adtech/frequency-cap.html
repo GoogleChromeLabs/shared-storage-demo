@@ -13,34 +13,40 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<html lang='en'>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" />
+    <meta name="description" content="Demo the various Permissions Policy features" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <title>Shared storage demo</title>
 
-<head>
-  <meta charset='utf-8' />
-  <meta http-equiv='X-UA-Compatible' />
-  <meta name='description' content='Demo the various Permissions Policy features' />
-  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0' />
-  <title>Shared storage demo</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amplang=en"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>"
+    />
+    <link rel="stylesheet" href="demo.css" />
+    <script src="frequency-cap.js"></script>
+    <script>
+      // This button is for resetting the demo, and is not part of the core logic
+      function resetSharedStorage() {
+        window.sharedStorage.set('frequency-cap-count', '5');
+      }
+    </script>
+  </head>
 
-  <link rel='stylesheet'
-    href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amplang=en' />
-  <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
-  <link rel='stylesheet' href='https://code.getmdl.io/1.3.0/material.indigo-amber.min.css' />
-  <link rel='icon'
-    href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>' />
-  <link rel="stylesheet" href="demo.css" />
-  <script src="frequency-cap.js"></script>
-  <script>
-    // This button is for resetting the demo, and is not part of the core logic
-    function resetSharedStorage() {
-      window.sharedStorage.set('frequency-cap-count', '5');
-    }
-  </script>
-</head>
-
-<body>
-  <fencedframe id="ad-slot" mode="opaque-ads"></fencedframe>
-  <p>
-    <button class="mdl-button mdl-js-button mdl-button--raised demo-button" onclick="resetSharedStorage()">Reset frequency cap stored in shared storage</button>
-  </p>
-</body>
+  <body>
+    <fencedframe id="ad-slot" mode="opaque-ads"></fencedframe>
+    <p>
+      <button class="mdl-button mdl-js-button mdl-button--raised demo-button" onclick="resetSharedStorage()">
+        Reset frequency cap stored in shared storage
+      </button>
+    </p>
+  </body>
+</html>

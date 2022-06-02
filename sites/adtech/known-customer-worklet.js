@@ -28,4 +28,3 @@ class SelectURLOperation {
 
 // Register the operation as 'known-customer'
 register('known-customer', SelectURLOperation);
-

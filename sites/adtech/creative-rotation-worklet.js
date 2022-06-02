@@ -31,10 +31,10 @@ class SelectURLOperation {
        * - Example: A -> B -> C -> A ...
        */
       case 'sequential':
-        const index = await this.sharedStorage.get('creative-rotation-index');
+        index = await this.sharedStorage.get('creative-rotation-index');
         const nextIndex = (index + 1) % urls.length;
 
-        console.log(`index = ${index} / next index = ${nextIndex}`)
+        console.log(`index = ${index} / next index = ${nextIndex}`);
 
         await this.sharedStorage.set('creative-rotation-index', nextIndex.toString());
         break;
@@ -54,7 +54,6 @@ class SelectURLOperation {
        * - Example: A=70% / B=20% / C=10%
        */
       case 'weighted-distribution':
-
         // Find the first URL where the cumnulative sum of the weights
         // exceed the random number. The array is sorted by the weight
         // in descending order.
