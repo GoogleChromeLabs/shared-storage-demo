@@ -31,7 +31,8 @@ class SelectURLOperation {
        * - Example: A -> B -> C -> A ...
        */
       case 'sequential':
-        index = await this.sharedStorage.get('creative-rotation-index');
+        const currentIndex = await this.sharedStorage.get('creative-rotation-index');
+        index = parseInt(currentIndex, 10)
         const nextIndex = (index + 1) % urls.length;
 
         console.log(`index = ${index} / next index = ${nextIndex}`);
