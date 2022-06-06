@@ -17,14 +17,14 @@
 class SelectURLOperation {
   async run(urls, data) {
     // Read the current frequency cap in shared storage
-    const count = await this.sharedStorage.get('frequency-cap-count');
+    const count = parseInt(await this.sharedStorage.get('frequency-cap-count'));
 
     // Log to console for the demo
     console.log(`urls = ${JSON.stringify(urls)}`);
     console.log(`frequency-cap-count in shared storage is ${count}`);
 
     // If the count is 0, the frequency cap has been reached
-    if (!count) {
+    if (count === 0) {
       console.log('frequency cap has been reached, and the default ad will be rendered');
       return 0;
     }

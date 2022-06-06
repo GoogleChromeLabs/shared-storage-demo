@@ -21,12 +21,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <title>Shared storage demo</title>
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amplang=en"
-    />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/open-props" />
+    <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/open-props/buttons.min.css" />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>"
@@ -39,29 +36,34 @@
         window.sharedStorage.set('ab-testing-group', group);
         console.log(`user added to ${group} group`);
       }
+
+      debugger;
+      window.localStorage.setItem('test-abc', 123);
     </script>
   </head>
 
   <body>
     <fencedframe id="ad-slot" mode="opaque-ads"></fencedframe>
-    <hr />
-    <div class="demo-control">
-      <p><b>Demo control</b></p>
-      <div class="demo-buttons">
-        <button class="mdl-button mdl-js-button mdl-button--raised demo-button" onclick="resetSharedStorage('control')">
-          Add user to the "Control" group
+    <div class="demo__controls">
+      <h5>Demo control</h5>
+      <div class="demo__buttons-container">
+        <button
+          class="mdl-button mdl-js-button mdl-button--raised demo__button"
+          onclick="resetSharedStorage('control')"
+        >
+          Add user to<br />"Control" group
         </button>
         <button
-          class="mdl-button mdl-js-button mdl-button--raised demo-button"
+          class="mdl-button mdl-js-button mdl-button--raised demo__button"
           onclick="resetSharedStorage('experiment-a')"
         >
-          Add user to the "Experiment A" group
+          Add user to<br />"Experiment A" group
         </button>
         <button
-          class="mdl-button mdl-js-button mdl-button--raised demo-button"
+          class="mdl-button mdl-js-button mdl-button--raised demo__button"
           onclick="resetSharedStorage('experiment-b')"
         >
-          Add user to the "Experiment B" group
+          Add user to<br />"Experiment B" group
         </button>
       </div>
     </div>

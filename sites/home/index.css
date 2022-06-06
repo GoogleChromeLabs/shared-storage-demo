@@ -13,30 +13,77 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/**
- * Copyright 2022 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-.demo-container {
-  margin: 50px;
+:where(h1, h2, h3, h4, h5, h6) {
+  font-weight: var(--font-weight-6);
 }
 
-a:link {
-  color: #8cb4ff;
+main {
+  margin: 0 auto;
+  padding: var(--size-5);
 }
 
-a:visited {
-  color: #8cb4ff;
+p {
+  margin-bottom: var(--size-3);
+}
+
+card {
+  flex-basis: var(--size-content-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  background: var(--surface-3);
+  border: 1px solid var(--surface-1);
+  padding: var(--size-4);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-2);
+}
+
+.demo__description p {
+  max-inline-size: var(--size-content-4);
+}
+
+.demo__description h4 {
+  margin-bottom: var(--size-4);
+}
+
+.demo__button-container {
+  display: flex;
+  margin: var(--size-3) 0;
+}
+
+.demo__button {
+  zoom: 90%;
+  max-width: var(--size-13);
+  --_bg: linear-gradient(var(--indigo-5), var(--indigo-7));
+  --_border: var(--indigo-6);
+  --_text: var(--indigo-0);
+  --_ink-shadow: 0 1px 0 var(--indigo-9);
+  margin-right: var(--size-2);
+}
+
+.demo__header {
+  padding: var(--size-5) 0;
+}
+
+.demo__description {
+  padding: var(--size-5) 0;
+}
+
+.demo__card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  gap: var(--size-5);
+}
+
+@media screen and (max-width: 800px) {
+  .demo__card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  main {
+    max-width: 1000px;
+  }
 }

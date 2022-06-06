@@ -22,12 +22,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <title>Shared storage demo</title>
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amplang=en"
-    />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/open-props" />
+    <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/open-props/buttons.min.css" />
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>"
@@ -45,27 +42,26 @@
 
   <body>
     <fencedframe id="ad-slot" mode="opaque-ads"></fencedframe>
-    <hr />
-    <div class="demo-control">
-      <p><b>Set creative rotation mode</b></p>
-      <div class="demo-buttons">
+    <div class="demo__controls">
+      <h5>Demo control</h5>
+      <div class="demo__buttons-container">
         <button
-          class="mdl-button mdl-js-button mdl-button--raised demo-button"
+          class="mdl-button mdl-js-button mdl-button--raised demo__button"
           onclick="resetSharedStorage('sequential')"
         >
-          sequential
+          Set rotation mode to <br />"Sequential"
         </button>
         <button
-          class="mdl-button mdl-js-button mdl-button--raised demo-button"
+          class="mdl-button mdl-js-button mdl-button--raised demo__button"
           onclick="resetSharedStorage('even-distribution')"
         >
-          even-distribution
+          Set rotation mdoe to <br />"Even distribution"<br />(~33% / ~33% / ~33%)
         </button>
         <button
-          class="mdl-button mdl-js-button mdl-button--raised demo-button"
+          class="mdl-button mdl-js-button mdl-button--raised demo__button"
           onclick="resetSharedStorage('weighted-distribution')"
         >
-          weighted-distribution (70% / 20% / 10%)
+          Set rotation mode to <br />"Weighted distribution"<br />(70% / 20% / 10%)
         </button>
       </div>
     </div>

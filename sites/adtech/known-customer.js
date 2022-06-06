@@ -25,7 +25,7 @@ async function injectAd() {
   await window.sharedStorage.worklet.addModule('known-customer-worklet.js');
 
   // Set the initial status to unknown ('0' is unknown and '1' is known)
-  window.sharedStorage.set('known-customer', '0', {
+  window.sharedStorage.set('known-customer', 0, {
     ignoreIfPresent: true,
   });
 

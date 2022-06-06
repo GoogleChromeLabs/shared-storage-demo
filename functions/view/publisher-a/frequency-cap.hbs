@@ -1,4 +1,45 @@
-<div class='demo-container'>
-  <h4 class='demo-title'><b>Publisher A - Frequency cap demo</b></h4>
-  <iframe class='dsp-iframe' src='{{{adtechUrl}}}/frequency-cap.html'></iframe>
-</div>
+<main class='demo-container'>
+  <div class='demo__navigation'>
+    <p>
+      [<a href='{{{demoHomeUrl}}}'> Return to main page </a>] [<a href='{{{publisherBUrl}}}/frequency-cap'>
+        Go to "Publisher B" page
+      </a>]
+    </p>
+  </div>
+  <div class='demo__header'>
+    <card class='demo__publisher-badge demo__publisher-badge--publisher-a'>
+      <h5>Publisher A</h5>
+    </card>
+    <h3>Shared storage - Frequency cap demo</h3>
+  </div>
+  <div class='demo__content'>
+    <iframe class='demo__dsp-iframe' src='{{{adtechUrl}}}/frequency-cap.html'></iframe>
+    <card class='demo__description'>
+      <h4>Description</h4>
+      <p>
+        When the same ad is shown to the user repeatedly, the ad starts to lose its effectiveness. Frequency capping
+        allows an advertiser to limit the number of times an ad can be shown to a user.
+      </p>
+      <p>
+        In this demo, the frequency cap has been set to 5. When the user sees the same example ad 5 times across both
+        <b>Publisher A</b>
+        and
+        <b>Publisher B</b>
+        sites, the default ad will be rendered. The demo contains a button to reset the count back to 5.
+      </p>
+      <h4>Code</h4>
+      <ul>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/adtech/frequency-cap.js'
+            target='_blank'
+          >Iframe logic</a>
+          (embedded into the publisher page)</li>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/adtech/frequency-cap-worklet.js'
+            target='_blank'
+          >Worklet</a>
+          (loaded and executed by the iframe logic)</li>
+      </ul>
+    </card>
+  </div>
+</main>

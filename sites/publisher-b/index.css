@@ -13,10 +13,86 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-.demo-container {
-  margin: 25px;
+:where(h1, h2, h3, h4, h5, h6) {
+  font-weight: var(--font-weight-6);
 }
 
-.dsp-iframe {
+main {
+  margin: 0 auto;
+  padding: var(--size-5);
+}
+
+p {
+  margin-bottom: var(--size-3);
+}
+
+.demo__dsp-iframe {
   height: 590px;
+}
+
+card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  background: var(--surface-3);
+  border: 1px solid var(--surface-1);
+  padding: var(--size-4);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-2);
+}
+
+.demo__header {
+  padding: var(--size-5) 0;
+  display: flex;
+  align-items: center;
+}
+
+.demo__publisher-badge {
+  display: flex;
+  margin-right: var(--size-3);
+  justify-content: center;
+  align-items: center;
+  padding: var(--size-3);
+}
+
+.demo__publisher-badge--publisher-a {
+  background-color: var(--green-5);
+}
+
+.demo__publisher-badge--publisher-b {
+  background-color: var(--orange-4);
+}
+
+.demo__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.demo__description {
+  height: fit-content;
+}
+
+@media screen and (min-width: 481px) {
+  main {
+    max-width: 1000px;
+  }
+
+  .demo__content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .demo__description {
+    margin-left: var(--size-3);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .demo__publisher-badge--publisher-a {
+    background-color: var(--green-9);
+  }
+
+  .demo__publisher-badge--publisher-b {
+    background-color: var(--orange-9);
+  }
 }
