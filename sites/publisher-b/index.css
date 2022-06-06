@@ -24,6 +24,7 @@ main {
 
 p {
   margin-bottom: var(--size-3);
+  max-inline-size: var(--size-content-4);
 }
 
 .demo__dsp-iframe {
@@ -39,6 +40,10 @@ card {
   padding: var(--size-4);
   border-radius: var(--radius-3);
   box-shadow: var(--shadow-2);
+}
+
+.demo__instructions {
+  display: none;
 }
 
 .demo__header {

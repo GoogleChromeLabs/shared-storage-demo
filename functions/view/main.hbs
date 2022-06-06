@@ -27,6 +27,14 @@
     <link rel='stylesheet' href='https://unpkg.com/open-props/normalize.min.css' />
     <link rel='stylesheet' href='https://unpkg.com/open-props/buttons.min.css' />
     <link rel='stylesheet' href='index.css' />
+    <script>
+      function checkSharedStorage() {
+        if (!('sharedStorage' in window)) {
+          document.querySelector('.demo__content').style.display = 'none';
+          document.querySelector('.demo__instructions').style.display = 'inherit';
+        }
+      }
+    </script>
   </head>
 
   <body>
