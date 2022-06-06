@@ -15,10 +15,10 @@
  */
 
 // The hostname is used to determine the usage of development localhost URL vs production URL
-const adtechUrl = window.location.host;
+const advertiserUrl = window.location.host;
 
 // The first URL is the default ad to be rendered when the frequency cap is reached
-const AD_URLS = [`https://${adtechUrl}/ads/default-ad.html`, `https://${adtechUrl}/ads/example-ad.html`];
+const AD_URLS = [`https://${advertiserUrl}/ads/default-ad.html`, `https://${advertiserUrl}/ads/example-ad.html`];
 
 async function injectAd() {
   // Load the worklet module

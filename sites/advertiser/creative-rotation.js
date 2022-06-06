@@ -15,22 +15,22 @@
  */
 
 // The hostname is used to determine the usage of development localhost URL vs production URL
-const adtechUrl = window.location.host;
+const advertiserUrl = window.location.host;
 
 // Ad confg with the URL of the ad, a probability weight for rotation, and the clickthrough rate.
 const DEMO_AD_CONFIG = [
   {
-    url: `https://${adtechUrl}/ads/ad-1.html`,
+    url: `https://${advertiserUrl}/ads/ad-1.html`,
     weight: 0.7,
     clickThroughRate: 0.06,
   },
   {
-    url: `https://${adtechUrl}/ads/ad-2.html`,
+    url: `https://${advertiserUrl}/ads/ad-2.html`,
     weight: 0.2,
     clickThroughRate: 0.02,
   },
   {
-    url: `https://${adtechUrl}/ads/ad-3.html`,
+    url: `https://${advertiserUrl}/ads/ad-3.html`,
     weight: 0.1,
     clickThroughRate: 0.09,
   },
