@@ -15,21 +15,21 @@
  */
 
 // The hostname is used to determine the usage of development localhost URL vs production URL
-const adtechUrl = window.location.host;
+const advertiserUrl = window.location.host;
 
 // Map the experiment groups to the URLs
 const EXPERIMENT_MAP = [
   {
     group: 'control',
-    url: `https://${adtechUrl}/ads/default-ad.html`,
+    url: `https://${advertiserUrl}/ads/default-ad.html`,
   },
   {
     group: 'experiment-a',
-    url: `https://${adtechUrl}/ads/experiment-ad-a.html`,
+    url: `https://${advertiserUrl}/ads/experiment-ad-a.html`,
   },
   {
     group: 'experiment-b',
-    url: `https://${adtechUrl}/ads/experiment-ad-b.html`,
+    url: `https://${advertiserUrl}/ads/experiment-ad-b.html`,
   },
 ];
 

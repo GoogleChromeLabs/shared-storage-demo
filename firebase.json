@@ -34,13 +34,13 @@
       ]
     },
     {
-      "site": "shared-storage-demo-adtech",
-      "public": "sites/adtech",
+      "site": "shared-storage-demo-advertiser",
+      "public": "sites/advertiser",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
           "source": "**",
-          "function": "adtech"
+          "function": "advertiser"
         }
       ],
       "headers": [

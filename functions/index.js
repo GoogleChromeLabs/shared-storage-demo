@@ -16,9 +16,9 @@
 const home = require('./app/home');
 const publisherA = require('./app/publisher-a');
 const publisherB = require('./app/publisher-b');
-const adtech = require('./app/adtech');
+const advertiser = require('./app/advertiser');
 
 exports.home = home.home;
 exports.publisherA = publisherA.publisherA;
 exports.publisherB = publisherB.publisherB;
-exports.adtech = adtech.adtech;
+exports.advertiser = advertiser.advertiser;

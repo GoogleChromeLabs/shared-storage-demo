@@ -15,10 +15,10 @@
  */
 
 // The hostname is used to determine the usage of development localhost URL vs production URL
-const adtechUrl = window.location.host;
+const advertiserUrl = window.location.host;
 
 // The first URL is the "register" button to be rendered if the user is not known
-const AD_URLS = [`https://${adtechUrl}/ads/register-button.html`, `https://${adtechUrl}/ads/buy-now-button.html`];
+const AD_URLS = [`https://${advertiserUrl}/ads/register-button.html`, `https://${advertiserUrl}/ads/buy-now-button.html`];
 
 async function injectAd() {
   // Load the worklet module

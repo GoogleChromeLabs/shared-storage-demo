@@ -21,19 +21,19 @@ const setupView = require('../helpers/setup-view');
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 
 // Setup app and view
-const app = setupView(express(), 'adtech');
+const app = setupView(express(), 'advertiser');
 
 // Setup root route
 app.get('/', (req, res) => {
-  const { DEMO_HOME_URL, PUBLISHER_A_URL, PUBLISHER_B_URL, ADTECH_URL, PAYMENT_PROVIDER_URL } = process.env;
+  const { DEMO_HOME_URL, PUBLISHER_A_URL, PUBLISHER_B_URL, ADVERTISER_URL, PAYMENT_PROVIDER_URL } = process.env;
 
   res.render('index', {
     demoHomeUrl: DEMO_HOME_URL,
     publisherAUrl: PUBLISHER_A_URL,
     publisherBUrl: PUBLISHER_B_URL,
-    adtechUrl: ADTECH_URL,
+    advertiserUrl: ADVERTISER_URL,
     paymentProvider: PAYMENT_PROVIDER_URL,
   });
 });
 
-exports.adtech = functions.https.onRequest(app);
+exports.advertiser = functions.https.onRequest(app);
