@@ -1,4 +1,46 @@
-<div class='demo-container'>
-  <p class='demo-title'><b>Publisher A - knownCustomer demo</b></p>
-  <iframe src='{{{adtechUrl}}}/known-customer.html'></iframe>
-</div>
+<main class='demo-container'>
+  <div class='demo__navigation'>
+    <p>
+      [<a href='{{{demoHomeUrl}}}'> Return to main page </a>] [<a href='{{{publisherBUrl}}}/known-customer'>
+        Go to "Publisher B" page
+      </a>]
+    </p>
+  </div>
+  <div class='demo__header'>
+    <card class='demo__publisher-badge demo__publisher-badge--publisher-a'>
+      <h5>Publisher A</h5>
+    </card>
+    <h3>Shared storage - Known customer demo</h3>
+  </div>
+  <div class='demo__content'>
+    <iframe class='demo__dsp-iframe' src='{{{adtechUrl}}}/known-customer.html'></iframe>
+    <card class='demo__description'>
+      <h4>Description</h4>
+      <p>
+        There may be cases where you want to render a different element based on whether the user has been seen before
+        at a different site. A payment provider may want to render a
+        <em>"Register"</em>
+        or
+        <em>"Buy now"</em>
+        button based on whether the user has registered before at the payment provider's site.
+      </p>
+      <p>
+        In this demo, a different button will be rendered for the publishers based on the user status set from the
+        payment provider page.
+      </p>
+      <h4>Code</h4>
+      <ul>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/adtech/known-customer.js'
+            target='_blank'
+          >Iframe logic</a>
+          (embedded into the publisher page)</li>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/adtech/known-customer-worklet.js'
+            target='_blank'
+          >Worklet</a>
+          (loaded and executed by the iframe logic)</li>
+      </ul>
+    </card>
+  </div>
+</main>

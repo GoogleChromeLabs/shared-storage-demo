@@ -22,7 +22,7 @@ class SelectURLOperation {
     console.log(`known-customer value is ${knownCustomer}`);
 
     // '0' is unknown and '1' is known
-    return parseInt(knownCustomer, 10);
+    return parseInt(knownCustomer);
   }
 }
 

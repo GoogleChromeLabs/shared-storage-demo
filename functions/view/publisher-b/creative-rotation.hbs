@@ -1,4 +1,44 @@
-<div class='demo-container'>
-  <h4 class='demo-title'><b>Publisher B - Creative rotation demo</b></h4>
-  <iframe class='dsp-iframe' src='{{{adtechUrl}}}/creative-rotation.html'></iframe>
-</div>
+<main class='demo-container'>
+  <div class='demo__navigation'>
+    <p>
+      [<a href='{{{demoHomeUrl}}}'> Return to main page </a>] [<a href='{{{publisherAUrl}}}/creative-rotation'>
+        Go to "Publisher A" page
+      </a>]
+    </p>
+  </div>
+  <div class='demo__header'>
+    <card class='demo__publisher-badge demo__publisher-badge--publisher-b'>
+      <h5>Publisher B</h5>
+    </card>
+    <h3>Shared storage - Creative rotation demo</h3>
+  </div>
+  <div class='demo__content'>
+    <iframe class='demo__dsp-iframe' src='{{{adtechUrl}}}/creative-rotation.html'></iframe>
+    <card class='demo__description'>
+      <h4>Description</h4>
+      <p>
+        An advertiser may want to show different ads of the same campaign to the user to increase effectiveness of the
+        ads.
+      </p>
+      <p>
+        In this demo, the creative can be rotated with different strategies. In sequential rotation, creatives A, B and
+        C are shown one after another. In even distribution, the creative is selected at random where each creative has
+        an equal chance of being chosen. In weighted distribution, some creatives can be weighted to be chosen more
+        often than another creative.
+      </p>
+      <h4>Code</h4>
+      <ul>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/adtech/creative-rotation.js'
+            target='_blank'
+          >Iframe logic</a>
+          (embedded into the publisher page)</li>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/adtech/creative-rotation-worklet.js'
+            target='_blank'
+          >Worklet</a>
+          (loaded and executed by the iframe logic)</li>
+      </ul>
+    </card>
+  </div>
+</main>

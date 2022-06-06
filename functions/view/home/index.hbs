@@ -1,51 +1,141 @@
 <main class='demo-container'>
-  <div class='demo-rows'>
-    <section class='demo-row'>
-      <p><b>Frequency cap</b></p>
-      <ul>
-        <li>
-          <a href='{{{publisherAUrl}}}/frequency-cap' target='_blank'>Publisher A</a>
-        </li>
-        <li>
-          <a href='{{{publisherBUrl}}}/frequency-cap' target='_blank'>Publisher B</a>
-        </li>
-      </ul>
-    </section>
-    <section class='demo-row'>
-      <p><b>A/B testing</b></p>
-      <ul>
-        <li>
-          <a href='{{{publisherAUrl}}}/ab-testing' target='_blank'>Publisher A</a>
-        </li>
-        <li>
-          <a href='{{{publisherBUrl}}}/ab-testing' target='_blank'>Publisher B</a>
-        </li>
-      </ul>
-    </section>
-    <section class='demo-row'>
-      <p><b>Creative rotation</b></p>
-      <ul>
-        <li>
-          <a href='{{{publisherAUrl}}}/creative-rotation' target='_blank'>Publisher A</a>
-        </li>
-        <li>
-          <a href='{{{publisherBUrl}}}/creative-rotation' target='_blank'>Publisher B</a>
-        </li>
-      </ul>
-    </section>
-    <section class='demo-row'>
-      <p><b>Known customer</b></p>
-      <ul>
-        <li>
-          <a href='{{{publisherAUrl}}}/known-customer' target='_blank'>Publisher A</a>
-        </li>
-        <li>
-          <a href='{{{publisherBUrl}}}/known-customer' target='_blank'>Publisher B</a>
-        </li>
-        <li>
-          <a href='{{{adtechUrl}}}/payment-provider.html' target='_blank'>Payment provider</a>
-        </li>
-      </ul>
-    </section>
+  <div class='demo__header'>
+    <h2>Shared Storage API demo</h2>
   </div>
+  <div class='demo__description'>
+    <h4>How to run the demo</h4>
+    <img src='https://wd.imgix.net/image/hVf1flv5Jdag8OQKYqOcJgWUvtz1/CWfgCMJQ5cYPOfjttF3k.png?auto=format&w=700' />
+    <br />
+    <p>
+      To run this demo,
+      <a
+        href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api'
+        target='_blank'
+      >follow the instructions</a>
+      for enabling the
+      <b>Privacy Sandbox Ads APIs</b>
+      experiment flag at
+      <b>chrome://flags/#privacy-sandbox-ads-apis</b>.
+    </p>
+    <h4>What is Shared Storage?</h4>
+    <p>
+      <a href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/' target='_blank'>Shared Storage API</a>
+      is a storage that can be used cross-site, meaning you store a value
+      <b>a.com</b>, then read a value from
+      <b>b.com</b>
+      at a later point in time. With Shared Storage, you can set data freely, but you are restricted in how you get that
+      data out of the storage. You will not be able to read the actual value that is stored. However, you will be able
+      to conduct limited operations based on the values stored in storage through. Shared Storage uses a concept called
+      “gates” that control how you can extract data out of the storage.
+    </p>
+    <p>
+      One of the gates is called
+      <a href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#url-selection' target='_blank'>URL
+        Selection</a>
+      which allows you to select a URL from a provided list, based on the information in Shared Storage. Another gate is
+      the
+      <a
+        href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#aggregated-data'
+        target='_blank'
+      >Private Aggregation API</a>, which allows you to send the data in shared storage to a trusted entity, but it is
+      not ready yet for testing. This demo only shows
+      <b>URL Selection</b>
+      use cases.
+    </p>
+    <h4>How does this demo work?</h4>
+    <p>
+      This demo is constrcuted from the perspective of an advertiser/adtech/dsp entity that wants to store information
+      across different publishers. Think of the advertiser as a shoe company, and the publishers as news companies. In
+      this demo, the same advertiser code will run on both
+      <b>Publisher A</b>
+      and
+      <b>Publisher B</b>
+      sites for each use case. Visit both publishers to see how data is shared between two publishers.
+    </p>
+    <p>Code for this demo is available on
+      <a href='https://github.com/GoogleChromeLabs/shared-storage-demo' target='_blank'>GitHub</a>.</p>
+
+  </div>
+  <section class='demo__card-container'>
+    <card class='demo__card--frequency-cap'>
+      <h4>Frequency cap</h4>
+      <div class='demo__button-container'>
+        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/frequency-cap', '_blank')">Publisher A</button>
+        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/frequency-cap', '_blank')">Publisher B</button>
+      </div>
+      <p>
+        When the same ad is shown to the user repeatedly, the ad starts to lose its effectiveness. Frequency capping
+        allows an advertiser to limit the number of times an ad can be shown to a user.
+      </p>
+      <p>
+        In this demo, the frequency cap has been set to 5. When the user sees the same example ad 5 times across both
+        <b>Publisher A</b>
+        and
+        <b>Publisher B</b>
+        sites, the default ad will be rendered. The demo contains a button to reset the count back to 5.
+      </p>
+    </card>
+    <card class='demo__card--creative-rotation'>
+      <h4>A/B testing</h4>
+      <div class='demo__button-container'>
+        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/ab-testing', '_blank')">Publisher A</button>
+        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/ab-testing', '_blank')">Publisher B</button>
+      </div>
+      <p>
+        To see if an experiment has the desired effect, you can conduct A/B testing across multiple sites. As an
+        advertiser, you can choose to render a different ad based on what group the user is assigned to. This group
+        assignment is stored into Shared Storage and can be used cross-site.
+      </p>
+      <p>
+        In this demo, the user can be assigned to
+        <em>"Control"</em>,
+        <em>"Experiment A"</em>, or
+        <em>"Experiment B</em>" groups. The same ad will be rendered across different sites based on what group the user
+        is in. The initial assignment is random, and the demo contains a set of butons to manually add the user to a
+        group.
+      </p>
+    </card>
+    <card class='demo__card--ab-testing'>
+      <h4>Creative rotation</h4>
+      <div class='demo__button-container'>
+        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/creative-rotation', '_blank')">Publisher
+          A</button>
+        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/creative-rotation', '_blank')">Publisher
+          B</button>
+      </div>
+      <p>
+        An advertiser may want to show different ads of the same campaign to the user to increase effectiveness of the
+        ads.
+      </p>
+      <p>
+        In this demo, the creative can be rotated with different strategies. In sequential rotation, creatives A, B and
+        C are shown one after another. In even distribution, the creative is selected at random where each creative has
+        an equal chance of being chosen. In weighted distribution, some creatives can be weighted to be chosen more
+        often than another creative.
+      </p>
+    </card>
+    <card class='demo__card--known-customer'>
+      <h4>Known customer</h4>
+      <div class='demo__button-container'>
+        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/known-customer', '_blank')">Publisher A</button>
+        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/known-customer', '_blank')">Publisher B</button>
+        <button
+          class='demo__button'
+          onclick="window.open('{{{adtechUrl}}}/payment-provider.html', '_blank')"
+        >Payment</button>
+      </div>
+      <p>
+        There may be cases where you want to render a different element based on whether the user has been seen before
+        at a different site. A payment provider may want to render a
+        <em>"Register"</em>
+        or
+        <em>"Buy now"</em>
+        button based on whether the user has registered before at the payment provider's site.
+      </p>
+      <p>
+        In this demo, a different button will be rendered for the publishers based on the user status set from the
+        payment provider page.
+      </p>
+    </card>
+  </section>
 </main>
