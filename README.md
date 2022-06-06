@@ -9,6 +9,10 @@ The following use-cases have been added:
 - Creative rotation
 - Known customer
 
+## Live demo
+
+Please visit [https://shared-storage-demo.web.app](https://shared-storage-demo.web.app) to see the demo.
+
 ## Instructions
 
-Start Chrome Canary with `--args --enable-features=SharedStorageAPI,FencedFrames,PrivacySandboxAdsAPIsOverride` and visit [https://shared-storage-demo.web.app/](https://shared-storage-demo.web.app/) or [http://localhost:8080](http://localhost:8080).
+To run this demo, [follow the instructions](https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api) for enabling the Privacy Sandbox Ads APIs experiment flag at **chrome://flags/#privacy-sandbox-ads-apis**.
