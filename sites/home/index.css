@@ -38,6 +38,16 @@ card {
   box-shadow: var(--shadow-2);
 }
 
+.demo__header {
+  display: flex;
+  align-items: center;
+}
+
+.demo__header img {
+  height: var(--size-9);
+  margin-right: var(--size-3);
+}
+
 .demo__description p {
   max-inline-size: var(--size-content-4);
 }
