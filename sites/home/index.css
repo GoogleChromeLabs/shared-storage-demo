@@ -80,6 +80,10 @@ card {
   .demo__card-container {
     grid-template-columns: 1fr;
   }
+
+  card {
+    max-width: 90%;
+  }
 }
 
 @media screen and (min-width: 481px) {
