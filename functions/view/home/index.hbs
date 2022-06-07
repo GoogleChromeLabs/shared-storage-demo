@@ -25,9 +25,7 @@
       <b>a.com</b>, then read a value from
       <b>b.com</b>
       at a later point in time. With Shared Storage, you can set data freely, but you are restricted in how you get that
-      data out of the storage. You will not be able to read the actual value that is stored. However, you will be able
-      to conduct limited operations based on the values stored in storage. Shared Storage uses a concept called “gates”
-      that control how you can extract data out of the storage.
+      data out of the storage. You will not be able to read the actual value that is stored outside of a worklet context, but you can process that value inside the worklet. To extract information from the worklet, Shared Storage uses a concept called “gates” to conduct various operations.
     </p>
     <p>
       One of the gates is called
