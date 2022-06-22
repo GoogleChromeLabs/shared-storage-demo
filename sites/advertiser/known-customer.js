@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-// The hostname is used to determine the usage of development localhost URL vs production URL
+// For demo purposes. The hostname is used to determine the usage of 
+// development localhost URL vs production URL
 const advertiserUrl = window.location.host;
 
 // The first URL is the "register" button to be rendered if the user is not known
 const AD_URLS = [
-  `https://${advertiserUrl}/ads/register-button.html`,
-  `https://${advertiserUrl}/ads/buy-now-button.html`,
+  { url: `https://${advertiserUrl}/ads/register-button.html` },
+  { url: `https://${advertiserUrl}/ads/buy-now-button.html` },
 ];
 
 async function injectAd() {

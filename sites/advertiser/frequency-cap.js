@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-// The hostname is used to determine the usage of development localhost URL vs production URL
+// For demo purposes. The hostname is used to determine the usage of 
+// development localhost URL vs production URL
 const advertiserUrl = window.location.host;
 
-// The first URL is the default ad to be rendered when the frequency cap is reached
-const AD_URLS = [`https://${advertiserUrl}/ads/default-ad.html`, `https://${advertiserUrl}/ads/example-ad.html`];
+const AD_URLS = [
+  { url: `https://localhost:4437/ads/default-ad.html` },
+  { url: `https://localhost:4437/ads/example-ad.html` },
+];
 
 async function injectAd() {
   // Load the worklet module

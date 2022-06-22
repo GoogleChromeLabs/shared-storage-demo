@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-// The hostname is used to determine the usage of development localhost URL vs production URL
+// For demo purposes. The hostname is used to determine the usage of 
+// development localhost URL vs production URL
 const advertiserUrl = window.location.host;
 
 // Map the experiment groups to the URLs
@@ -48,9 +49,10 @@ async function injectAd() {
     ignoreIfPresent: true,
   });
 
-  // Run the URL selection operation to select an ad based on the experiment group in shared storage
-  const urls = EXPERIMENT_MAP.map(({ url }) => url);
+  const urls = EXPERIMENT_MAP.map(({ url }) => ({ url }));
   const groups = EXPERIMENT_MAP.map(({ group }) => group);
+
+  // Run the URL selection operation to select an ad based on the experiment group in shared storage
   const opaqueURL = await window.sharedStorage.selectURL('ab-testing', urls, { data: groups });
 
   // Render the opaque URL into a fenced frame

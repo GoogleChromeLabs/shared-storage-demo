@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-// The hostname is used to determine the usage of development localhost URL vs production URL
+// For demo purposes. The hostname is used to determine the usage of 
+// development localhost URL vs production URL
 const advertiserUrl = window.location.host;
 
 // Ad confg with the URL of the ad, a probability weight for rotation, and the clickthrough rate.
@@ -22,17 +23,14 @@ const DEMO_AD_CONFIG = [
   {
     url: `https://${advertiserUrl}/ads/ad-1.html`,
     weight: 0.7,
-    clickThroughRate: 0.06,
   },
   {
     url: `https://${advertiserUrl}/ads/ad-2.html`,
     weight: 0.2,
-    clickThroughRate: 0.02,
   },
   {
     url: `https://${advertiserUrl}/ads/ad-3.html`,
     weight: 0.1,
-    clickThroughRate: 0.09,
   },
 ];
 
@@ -54,9 +52,10 @@ async function injectAd() {
   // Initially set the storage to sequential mode for the demo
   seedStorage();
 
+  const urls = DEMO_AD_CONFIG.map(({ url }) => ({ url }));
+
   // Run the URL selection operation to determine the next ad that should be rendered
-  const adUrls = DEMO_AD_CONFIG.map(({ url }) => url);
-  const opaqueURL = await window.sharedStorage.selectURL('creative-rotation', adUrls, { data: DEMO_AD_CONFIG });
+  const opaqueURL = await window.sharedStorage.selectURL('creative-rotation', urls, { data: DEMO_AD_CONFIG });
 
   // Render the opaque URL into a fenced frame
   document.getElementById('ad-slot').src = opaqueURL;
