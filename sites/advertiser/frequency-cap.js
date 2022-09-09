@@ -19,8 +19,8 @@
 const advertiserUrl = window.location.host;
 
 const AD_URLS = [
-  { url: `https://localhost:4437/ads/default-ad.html` },
-  { url: `https://localhost:4437/ads/example-ad.html` },
+  { url: `https://${advertiserUrl}/ads/default-ad.html` },
+  { url: `https://${advertiserUrl}/ads/example-ad.html` },
 ];
 
 async function injectAd() {
