@@ -1,23 +1,13 @@
 <main class='demo-container'>
   <div class='demo__header'>
-    <img src="assets/privacy-sandbox-logo.png">
+    <img src='assets/privacy-sandbox-logo.png' />
     <h2>Shared Storage API demo</h2>
   </div>
   <div class='demo__description'>
     <h4>How to run the demo</h4>
     <img src='https://wd.imgix.net/image/hVf1flv5Jdag8OQKYqOcJgWUvtz1/CWfgCMJQ5cYPOfjttF3k.png?auto=format&w=700' />
     <br />
-    <p>
-      To run this demo,
-      <a
-        href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api'
-        target='_blank'
-      >follow the instructions</a>
-      for enabling the
-      <b>Privacy Sandbox Ads APIs</b>
-      experiment flag at
-      <b>chrome://flags/#privacy-sandbox-ads-apis</b>.
-    </p>
+
     <h4>What is Shared Storage?</h4>
     <p>
       <a href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/' target='_blank'>Shared Storage API</a>
@@ -25,7 +15,9 @@
       <b>a.com</b>, then read a value from
       <b>b.com</b>
       at a later point in time. With Shared Storage, you can set data freely, but you are restricted in how you get that
-      data out of the storage. You will not be able to read the actual value that is stored outside of a worklet context, but you can process that value inside the worklet. To extract information from the worklet, Shared Storage uses a concept called “gates” to conduct various operations.
+      data out of the storage. You will not be able to read the actual value that is stored outside of a worklet
+      context, but you can process that value inside the worklet. To extract information from the worklet, Shared
+      Storage uses a concept called “gates” to conduct various operations.
     </p>
     <p>
       One of the gates is called
@@ -43,7 +35,7 @@
     </p>
     <h4>How does this demo work?</h4>
     <p>
-      This demo is constructed from the perspective of an advertiser/DSP that wants to store information across
+      This demo is mostly constructed from the perspective of an advertiser/DSP that wants to store information across
       different publishers. Think of the advertiser as a shoe company, and the publishers as news companies. In this
       demo, the same advertiser code will run on both
       <b>Publisher A</b>
@@ -56,85 +48,182 @@
 
   </div>
   <section class='demo__card-container'>
-    <card class='demo__card--frequency-cap'>
-      <h4>Frequency cap</h4>
-      <div class='demo__button-container'>
-        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/frequency-cap', '_blank')">Publisher A</button>
-        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/frequency-cap', '_blank')">Publisher B</button>
+    <section class='demo__gate-container'>
+      <div class='demo__gate-header'>
+        <h3>Private aggregation output gate</h3>
+        <p>The aggregation API is used to report events from a Shared Storage worklet to Aggregation Service to generate
+          summary reports. To test the feature, add the following flag to the command line: 
+          <code class='demo__code-inline-break'>"--args
+            --enable-features=PrivacySandboxAdsAPIsOverride,InterestGroupStorage,Fledge,BiddingAndScoringDebugReportingAPI,AllowURNsInIframes,BrowsingTopics,ConversionMeasurement,FencedFrames,OverridePrivacySandboxSettingsLocalTesting,SharedStorageAPI,PrivateAggregationApi"</code>
+            </p>
+        <p>To see the reports transmitted, visit the
+          <code>chrome://private-aggregation-internals</code>
+          page. You can also click the "Send report" button to send the reports instantly to the server.</p>
+        <p>This demo implements the frontend of the API where the report is generated and sent from the client, but does
+          not integrate with Aggregation Service.</p>
       </div>
-      <p>
-        When the same ad is shown to the user repeatedly, the ad starts to lose its effectiveness. Frequency capping
-        allows an advertiser to limit the number of times an ad can be shown to a user.
-      </p>
-      <p>
-        In this demo, the frequency cap has been set to 5. When the user sees the same example ad 5 times across both
-        <b>Publisher A</b>
-        and
-        <b>Publisher B</b>
-        sites, the default ad will be rendered. The demo contains a button to reset the count back to 5.
-      </p>
-    </card>
-    <card class='demo__card--creative-rotation'>
-      <h4>A/B testing</h4>
-      <div class='demo__button-container'>
-        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/ab-testing', '_blank')">Publisher A</button>
-        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/ab-testing', '_blank')">Publisher B</button>
+      <card class='demo__card--reach-measurement'>
+        <h4>Unique reach measurement</h4>
+        <div class='demo__button-container'>
+          <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/reach-measurement')">Publisher A</button>
+          <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/reach-measurement')">Publisher B</button>
+        </div>
+        <p>
+          An advertiser may want to keep track of how many unique impressions an ad has across different sites.
+        </p>
+        <p>
+          In this demo, visiting either Publisher A or B sites will send the aggregatable report, but will not send it
+          on subsequent visits. The ad camaign ID dimension is encoded into the aggregation key (bucket), and the count
+          is used as the aggregatable value. To reset the demo, click the "Clear impression status" button on the demo
+          page.
+        </p>
+        <p>
+          The summary report will contain infomration such as "Approximately 391 users have seen the ad campaign ID
+          743."
+        </p>
+      </card>
+      <card class='demo__card--demographics-measurement'>
+        <h4>Demographics measurement</h4>
+        <div class='demo__button-container'>
+          <button
+            class='demo__button'
+            onclick="window.open('{{{advertiserUrl}}}/private-aggregation/demographics-survey.html')"
+          >Survey</button>
+          <button
+            class='demo__button'
+            onclick="window.open('{{{publisherAUrl}}}/demographics-measurement')"
+          >Publisher</button>
+        </div>
+        <p>
+          You may want to measure the demographics of the users who has seen some content you have embedded across
+          different sites.
+        </p>
+        <p>
+          For this demo, visit the data collection page to enter your demographic data where the information you enter
+          is added to Shared Storage. This simulates one of the ways that the demographics information can be available.
+          Then visit either Publisher A or B sites which will trigger the aggregatable report to be sent once across
+          both sites. The content ID, age group ID, and the geography ID dimensions are encoded into the aggregation key
+          (bucket), and the count is used as the aggregatable value.
+        </p>
+        <p>
+          The summary report generated will provide information such as "Approximately 391 users who have seen the
+          content ID 743 are between the age of 18-25 and are from New York City."
+        </p>
+      </card>
+      <card class='demo__card--k-freq-measurement'>
+        <h4>K+ frequency measurement</h4>
+        <div class='demo__button-container'>
+          <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/k-freq-measurement')">Publisher A</button>
+          <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/k-freq-measurement')">Publisher B</button>
+        </div>
+        <p>
+          An advertiser may want to measure the number of users who have seen K or more ads on a given client across
+          different sites for a pre-chosen value of K.
+        </p>
+        In this demo, the impression count is added to Shared Storage where it increments by 1 on every impression for
+        both publisher A and B. When the impression count has reached 3, the Private Aggregation API is called to send
+        the report to Aggregation Service. The ad campaign ID dimension is encoded as the aggregation key, and the count
+        is used as the aggregatable value.
+        <p>
+          <p>
+            The summary report generated will provide information such as "Approximately 391 users have seen the ad
+            campaign ID 743 at least 3 times."
+          </p>
+        </p>
+      </card>
+    </section>
+    <section class='demo__gate-container'>
+      <div class='demo__gate-header'>
+        <h3>URL selection output gate</h3>
+        <p>URL selection is used to choose a URL based on the information in Shared Storage.</p>
+        <p>To run the URL selection demo,
+          <a
+            href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api'
+            target='_blank'
+          >follow the instructions</a>
+          for enabling the
+          <b>Privacy Sandbox Ads APIs</b>
+          experiment flag at
+          <b>chrome://flags/#privacy-sandbox-ads-apis</b>.</p>
       </div>
-      <p>
-        To see if an experiment has the desired effect, you can conduct A/B testing across multiple sites. As an
-        advertiser, you can choose to render a different ad based on what group the user is assigned to. This group
-        assignment is stored into Shared Storage and can be used cross-site.
-      </p>
-      <p>
-        In this demo, the user can be assigned to
-        <em>"Control"</em>,
-        <em>"Experiment A"</em>, or
-        <em>"Experiment B</em>" groups. The same ad will be rendered across different sites based on what group the user
-        is in. The initial assignment is random, and the demo contains a set of butons to manually add the user to a
-        group.
-      </p>
-    </card>
-    <card class='demo__card--ab-testing'>
-      <h4>Creative rotation</h4>
-      <div class='demo__button-container'>
-        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/creative-rotation', '_blank')">Publisher
-          A</button>
-        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/creative-rotation', '_blank')">Publisher
-          B</button>
-      </div>
-      <p>
-        An advertiser may want to show different ads of the same campaign to the user to increase effectiveness of the
-        ads.
-      </p>
-      <p>
-        In this demo, the creative can be rotated with different strategies. In sequential rotation, creatives A, B and
-        C are shown one after another. In even distribution, the creative is selected at random where each creative has
-        an equal chance of being chosen. In weighted distribution, some creatives can be weighted to be chosen more
-        often than another creative.
-      </p>
-    </card>
-    <card class='demo__card--known-customer'>
-      <h4>Known customer</h4>
-      <div class='demo__button-container'>
-        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/known-customer', '_blank')">Publisher A</button>
-        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/known-customer', '_blank')">Publisher B</button>
-        <button
-          class='demo__button'
-          onclick="window.open('{{{advertiserUrl}}}/payment-provider.html', '_blank')"
-        >Payment</button>
-      </div>
-      <p>
-        There may be cases where you want to render a different element based on whether the user has been seen before
-        at a different site. A payment provider may want to render a
-        <em>"Register"</em>
-        or
-        <em>"Buy now"</em>
-        button based on whether the user has registered before at the payment provider's site.
-      </p>
-      <p>
-        In this demo, a different button will be rendered for the publishers based on the user status set from the
-        payment provider page.
-      </p>
-    </card>
+      <card class='demo__card--frequency-cap'>
+        <h4>Frequency cap</h4>
+        <div class='demo__button-container'>
+          <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/frequency-cap')">Publisher A</button>
+          <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/frequency-cap')">Publisher B</button>
+        </div>
+        <p>
+          When the same ad is shown to the user repeatedly, the ad starts to lose its effectiveness. Frequency capping
+          allows an advertiser to limit the number of times an ad can be shown to a user.
+        </p>
+        <p>
+          In this demo, the frequency cap has been set to 5. When the user sees the same example ad 5 times across both
+          <b>Publisher A</b>
+          and
+          <b>Publisher B</b>
+          sites, the default ad will be rendered. The demo contains a button to reset the count back to 5.
+        </p>
+      </card>
+      <card class='demo__card--creative-rotation'>
+        <h4>A/B testing</h4>
+        <div class='demo__button-container'>
+          <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/ab-testing')">Publisher A</button>
+          <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/ab-testing')">Publisher B</button>
+        </div>
+        <p>
+          To see if an experiment has the desired effect, you can conduct A/B testing across multiple sites. As an
+          advertiser, you can choose to render a different ad based on what group the user is assigned to. This group
+          assignment is stored into Shared Storage and can be used cross-site.
+        </p>
+        <p>
+          In this demo, the user can be assigned to
+          <em>"Control"</em>,
+          <em>"Experiment A"</em>, or
+          <em>"Experiment B</em>" groups. The same ad will be rendered across different sites based on what group the
+          user is in. The initial assignment is random, and the demo contains a set of butons to manually add the user
+          to a group.
+        </p>
+      </card>
+      <card class='demo__card--ab-testing'>
+        <h4>Creative rotation</h4>
+        <div class='demo__button-container'>
+          <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/creative-rotation')">Publisher A</button>
+          <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/creative-rotation')">Publisher B</button>
+        </div>
+        <p>
+          An advertiser may want to show different ads of the same campaign to the user to increase effectiveness of the
+          ads.
+        </p>
+        <p>
+          In this demo, the creative can be rotated with different strategies. In sequential rotation, creatives A, B
+          and C are shown one after another. In even distribution, the creative is selected at random where each
+          creative has an equal chance of being chosen. In weighted distribution, some creatives can be weighted to be
+          chosen more often than another creative.
+        </p>
+      </card>
+      <card class='demo__card--known-customer'>
+        <h4>Known customer</h4>
+        <div class='demo__button-container'>
+          <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/known-customer')">Publisher A</button>
+          <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/known-customer')">Publisher B</button>
+          <button
+            class='demo__button'
+            onclick="window.open('{{{advertiserUrl}}}/url-selection/payment-provider.html', '_blank')"
+          >Payment</button>
+        </div>
+        <p>
+          There may be cases where you want to render a different element based on whether the user has been seen before
+          at a different site. A payment provider may want to render a
+          <em>"Register"</em>
+          or
+          <em>"Buy now"</em>
+          button based on whether the user has registered before at the payment provider's site.
+        </p>
+        <p>
+          In this demo, a different button will be rendered for the publishers based on the user status set from the
+          payment provider page.
+        </p>
+      </card>
+    </section>
   </section>
 </main>

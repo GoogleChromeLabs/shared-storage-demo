@@ -1,7 +1,7 @@
 <main class='demo-container'>
   <div class='demo__navigation'>
     <p>
-      [<a href='{{{demoHomeUrl}}}'> Return to main page </a>] [<a href='{{{publisherBUrl}}}/known-customer'>
+      [<a href='{{{demoHomeUrl}}}'> Return to main page </a>] [<a href='{{{publisherBUrl}}}/reach-measurement'>
         Go to "Publisher B" page
       </a>]
     </p>
@@ -10,33 +10,34 @@
     <card class='demo__publisher-badge demo__publisher-badge--publisher-a'>
       <h5>Publisher A</h5>
     </card>
-    <h3>Shared storage - Known customer demo</h3>
+    <h3>Shared storage - Reach measurement</h3>
   </div>
   <div class='demo__content'>
-    <iframe class='demo__dsp-iframe' src='{{{advertiserUrl}}}/url-selection/known-customer.html'></iframe>
+    <iframe class='demo__dsp-iframe--measurement' src='{{{advertiserUrl}}}/private-aggregation/reach-measurement.html'></iframe>
     <card class='demo__description'>
       <h4>Description</h4>
       <p>
-        There may be cases where you want to render a different element based on whether the user has been seen before
-        at a different site. A payment provider may want to render a
-        <em>"Register"</em>
-        or
-        <em>"Buy now"</em>
-        button based on whether the user has registered before at the payment provider's site.
+        To see if an experiment has the desired effect, you can conduct A/B testing across multiple sites. As an
+        advertiser, you can choose to render a different ad based on what group the user is assigned to. This group
+        assignment is stored into Shared Storage and can be used cross-site.
       </p>
       <p>
-        In this demo, a different button will be rendered for the publishers based on the user status set from the
-        payment provider page.
+        In this demo, the user can be assigned to
+        <em>"Control"</em>,
+        <em>"Experiment A"</em>, or
+        <em>"Experiment B</em>" groups. The same ad will be rendered across different sites based on what group the user
+        is in. The initial assignment is random, and the demo contains a set of butons to manually add the user to a
+        group.
       </p>
       <h4>Code</h4>
       <ul>
         <li><a
-            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/advertiser/url-selection/known-customer.js'
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/advertiser/private-aggregation/reach-measurement.js'
             target='_blank'
           >Iframe logic</a>
           (embedded into the publisher page)</li>
         <li><a
-            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/advertiser/url-selection/known-customer-worklet.js'
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/advertiser/private-aggregation/reach-measurement-worklet.js'
             target='_blank'
           >Worklet</a>
           (loaded and executed by the iframe logic)</li>

@@ -36,4 +36,10 @@ app.get('/', (req, res) => {
   });
 });
 
+app.post('/.well-known/private-aggregation/report-shared-storage', (req, res) => {
+  console.log('\x1b[1;31m%s\x1b[0m', `🚀 Adtech has received an event-level report from the browser`);
+  console.log('REGULAR REPORT RECEIVED (event-level):\n=== \n', req.body, '\n=== \n');
+  res.sendStatus(200);
+});
+
 exports.advertiser = functions.https.onRequest(app);

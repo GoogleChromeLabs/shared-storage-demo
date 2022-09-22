@@ -1,0 +1,142 @@
+<!--
+ Copyright 2022 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" />
+    <meta name="description" content="Demo of various Shared Storage use-cases" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <title>Shared storage demo</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/open-props" />
+    <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/open-props/buttons.min.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>"
+    />
+    <link rel="stylesheet" href="demographics-survey.css" />
+    <script>
+      function checkSharedStorage() {
+        if (!('sharedStorage' in window)) {
+          document.querySelector('.demo__content').style.display = 'none';
+          document.querySelector('.demo__instructions').style.display = 'inherit';
+        }
+      }
+    </script>
+    <script defer src="demographics-survey.js"></script>
+  </head>
+
+  <body>
+    <script>
+      function resetSharedStorage(status) {
+        console.log(`user status set to ${status} (0 is unknown / 1 is known)`);
+        window.sharedStorage.set('known-customer', status);
+      }
+    </script>
+    <main class="demo-container">
+      <div class="demo__navigation">
+        <p>
+          [<a href="{{{demoHomeUrl}}}"> Return to main page </a>] [<a href="{{{publisherAUrl}}}/demographics-survey">
+            Go to "Publisher" page </a
+          >]
+        </p>
+      </div>
+      <div class="demo__header">
+        <card class="demo__publisher-badge demo__publisher-badge--publisher-a">
+          <h5>Advertiser</h5>
+        </card>
+        <h3>Shared storage - Demographics measurement demo</h3>
+      </div>
+      <div class="demo__content">
+        <card class="demo__survey-container">
+          <form class="demo__survey-form">
+            <p>Please select your demographics information to be set in Shared Storage</p>
+            <div>
+              <b>Select your age group</b>
+              <label class="demo__radio-label" for="age-group-18-39"><input type="radio" id="age-group-18-39" name="age-group" value="18-39" checked/>&nbsp 18 - 39</label>
+              <label class="demo__radio-label" for="age-group-40-64"><input type="radio" id="age-group-40-64" name="age-group" value="40-64" />&nbsp 40 - 64</label>
+              <label class="demo__radio-label" for="age-group-65+"><input type="radio" id="age-group-65+" name="age-group" value="65+" />&nbsp 65+</label>
+            </div>
+            <div>
+              <b>Select your continent</b>
+              <label class="demo__radio-label" for="africa"><input type="radio" id="africa" name="continent" value="africa" checked/>&nbsp Africa</label>
+              <label class="demo__radio-label" for="antarctica"><input type="radio" id="antarctica" name="continent" value="antarctica" />&nbsp Antarctica</label>
+              <label class="demo__radio-label" for="asia"><input type="radio" id="asia" name="continent" value="asia" />&nbsp Asia</label>
+              <label class="demo__radio-label" for="australia"><input type="radio" id="australia" name="continent" value="australia" />&nbsp Australia</label>
+              <label class="demo__radio-label" for="europe"><input type="radio" id="europe" name="continent" value="europe" />&nbsp Europe</label>
+              <label class="demo__radio-label" for="north-america"><input type="radio" id="north-america" name="continent" value="north-america" />&nbsp North America</label>
+              <label class="demo__radio-label" for="south-america"><input type="radio" id="south-america" name="continent" value="south-america" />&nbsp South America</label>
+            </div>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </card>
+        <card class="demo__description">
+          <h4>Description</h4>
+          <p>
+            An advertiser may want to show different ads of the same campaign to the user to increase effectiveness of
+            the ads.
+          </p>
+          <p>
+            In this demo, the creative can be rotated with different strategies. In sequential rotation, creatives A, B
+            and C are shown one after another. In even distribution, the creative is selected at random where each
+            creative has an equal chance of being chosen. In weighted distribution, some creatives can be weighted to be
+            chosen more often than another creative.
+          </p>
+          <h4>Code</h4>
+          <ul>
+            <li>
+              <a
+                href="https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/advertiser/creative-rotation.js"
+                target="_blank"
+                >Iframe logic</a
+              >
+              (embedded into the publisher page)
+            </li>
+            <li>
+              <a
+                href="https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/advertiser/creative-rotation-worklet.js"
+                target="_blank"
+                >Worklet</a
+              >
+              (loaded and executed by the iframe logic)
+            </li>
+          </ul>
+        </card>
+      </div>
+      <card class="demo__instructions">
+        <p>
+          Shared Storage API is not enabled in your browser. Follow the
+          <a
+            href="https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api"
+            target="_blank"
+            >instructions</a
+          >, and enable the the
+          <b>Privacy Sandbox Ads APIs</b>
+          experiment flag at
+          <b>chrome://flags/#privacy-sandbox-ads-apis</b>
+          with Chrome 104.0.5086.0 and above to test this Shared Storage API demo.
+        </p>
+      </card>
+    </main>
+    <script defer>
+      checkSharedStorage();
+    </script>
+  </body>
+</html>
