@@ -41,6 +41,10 @@
         {
           "source": "**",
           "function": "advertiser"
+        },
+        {
+          "source": "/.well-known/**",
+          "function": "advertiser"
         }
       ],
       "headers": [

@@ -1,6 +1,6 @@
 <main class='demo-container'>
   <div class='demo__header'>
-    <img src="assets/privacy-sandbox-logo.png">
+    <img src='assets/privacy-sandbox-logo.png' />
     <h2>Shared Storage API demo</h2>
   </div>
   <div class='demo__description'>
@@ -25,7 +25,9 @@
       <b>a.com</b>, then read a value from
       <b>b.com</b>
       at a later point in time. With Shared Storage, you can set data freely, but you are restricted in how you get that
-      data out of the storage. You will not be able to read the actual value that is stored outside of a worklet context, but you can process that value inside the worklet. To extract information from the worklet, Shared Storage uses a concept called “gates” to conduct various operations.
+      data out of the storage. You will not be able to read the actual value that is stored outside of a worklet
+      context, but you can process that value inside the worklet. To extract information from the worklet, Shared
+      Storage uses a concept called “gates” to conduct various operations.
     </p>
     <p>
       One of the gates is called
@@ -55,12 +57,16 @@
       <a href='https://github.com/GoogleChromeLabs/shared-storage-demo' target='_blank'>GitHub</a>.</p>
 
   </div>
-  <section class='demo__card-container'>
+  <section class='demo__gate-container'>
+    <div class='demo__gate-header'>
+      <h3>URL selection output gate</h3>
+      <p>URL selection is used to choose a URL from a supplied list, based on the information in Shared Storage.</p>
+    </div>
     <card class='demo__card--frequency-cap'>
       <h4>Frequency cap</h4>
       <div class='demo__button-container'>
-        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/frequency-cap', '_blank')">Publisher A</button>
-        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/frequency-cap', '_blank')">Publisher B</button>
+        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/frequency-cap', '_self')">Publisher A</button>
+        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/frequency-cap', '_self')">Publisher B</button>
       </div>
       <p>
         When the same ad is shown to the user repeatedly, the ad starts to lose its effectiveness. Frequency capping
@@ -77,8 +83,8 @@
     <card class='demo__card--creative-rotation'>
       <h4>A/B testing</h4>
       <div class='demo__button-container'>
-        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/ab-testing', '_blank')">Publisher A</button>
-        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/ab-testing', '_blank')">Publisher B</button>
+        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/ab-testing', '_self')">Publisher A</button>
+        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/ab-testing', '_self')">Publisher B</button>
       </div>
       <p>
         To see if an experiment has the desired effect, you can conduct A/B testing across multiple sites. As an
@@ -97,10 +103,8 @@
     <card class='demo__card--ab-testing'>
       <h4>Creative rotation</h4>
       <div class='demo__button-container'>
-        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/creative-rotation', '_blank')">Publisher
-          A</button>
-        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/creative-rotation', '_blank')">Publisher
-          B</button>
+        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/creative-rotation', '_self')">Publisher A</button>
+        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/creative-rotation', '_self')">Publisher B</button>
       </div>
       <p>
         An advertiser may want to show different ads of the same campaign to the user to increase effectiveness of the
@@ -116,11 +120,11 @@
     <card class='demo__card--known-customer'>
       <h4>Known customer</h4>
       <div class='demo__button-container'>
-        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/known-customer', '_blank')">Publisher A</button>
-        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/known-customer', '_blank')">Publisher B</button>
+        <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/known-customer', '_self')">Publisher A</button>
+        <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/known-customer', '_self')">Publisher B</button>
         <button
           class='demo__button'
-          onclick="window.open('{{{advertiserUrl}}}/payment-provider.html', '_blank')"
+          onclick="window.open('{{{advertiserUrl}}}/payment-provider', '_self')"
         >Payment</button>
       </div>
       <p>
