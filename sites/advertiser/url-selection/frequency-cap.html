@@ -13,7 +13,6 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -29,11 +28,25 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>"
     />
-    <link rel="stylesheet" href="demo.css" />
-    <script src="known-customer.js"></script>
+    <link rel="stylesheet" href="../demo.css" />
+    <script src="frequency-cap.js"></script>
+    <script>
+      // This button is for resetting the demo, and is not part of the core logic
+      function resetSharedStorage() {
+        window.sharedStorage.set('frequency-cap-count', '5');
+      }
+    </script>
   </head>
 
   <body>
-    <fencedframe id="button-slot" mode="opaque-ads"></fencedframe>
+    <fencedframe id="ad-slot" mode="opaque-ads"></fencedframe>
+    <div class="demo__controls">
+      <h5>Demo control</h5>
+      <div class="demo__buttons-container">
+        <button class="mdl-button mdl-js-button mdl-button--raised demo__button" onclick="resetSharedStorage()">
+          Reset frequency cap to 5
+        </button>
+      </div>
+    </div>
   </body>
 </html>

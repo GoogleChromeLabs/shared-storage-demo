@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// For demo purposes. The hostname is used to determine the usage of 
+// For demo purposes. The hostname is used to determine the usage of
 // development localhost URL vs production URL
 const advertiserUrl = window.location.host;
 

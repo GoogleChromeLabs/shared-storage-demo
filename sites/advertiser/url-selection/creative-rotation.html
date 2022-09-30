@@ -13,6 +13,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -28,12 +29,13 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>"
     />
-    <link rel="stylesheet" href="demo.css" />
-    <script src="frequency-cap.js"></script>
+    <link rel="stylesheet" href="../demo.css" />
+    <script src="creative-rotation.js"></script>
     <script>
       // This button is for resetting the demo, and is not part of the core logic
-      function resetSharedStorage() {
-        window.sharedStorage.set('frequency-cap-count', '5');
+      function resetSharedStorage(rotationMode) {
+        window.sharedStorage.set('creative-rotation-mode', rotationMode);
+        console.log(`creative rotation mode set to ${rotationMode}`);
       }
     </script>
   </head>
@@ -43,8 +45,23 @@
     <div class="demo__controls">
       <h5>Demo control</h5>
       <div class="demo__buttons-container">
-        <button class="mdl-button mdl-js-button mdl-button--raised demo__button" onclick="resetSharedStorage()">
-          Reset frequency cap to 5
+        <button
+          class="mdl-button mdl-js-button mdl-button--raised demo__button"
+          onclick="resetSharedStorage('sequential')"
+        >
+          Set rotation mode to <br />"Sequential"
+        </button>
+        <button
+          class="mdl-button mdl-js-button mdl-button--raised demo__button"
+          onclick="resetSharedStorage('even-distribution')"
+        >
+          Set rotation mode to <br />"Even distribution"<br />(~33% / ~33% / ~33%)
+        </button>
+        <button
+          class="mdl-button mdl-js-button mdl-button--raised demo__button"
+          onclick="resetSharedStorage('weighted-distribution')"
+        >
+          Set rotation mode to <br />"Weighted distribution"<br />(70% / 20% / 10%)
         </button>
       </div>
     </div>
