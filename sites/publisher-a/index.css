@@ -78,6 +78,10 @@ card {
   height: fit-content;
 }
 
+.demo__dsp-iframe--measurement {
+  height: 350px;
+}
+
 @media screen and (min-width: 481px) {
   main {
     max-width: 1000px;

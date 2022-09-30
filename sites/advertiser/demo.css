@@ -32,6 +32,7 @@ body {
   border: none;
 }
 
+.demo__card,
 .demo__controls {
   display: flex;
   flex-direction: column;
@@ -43,6 +44,7 @@ body {
   margin: var(--size-3) 0;
   border-radius: var(--radius-3);
   box-shadow: var(--shadow-2);
+  margin-top: 0;
 }
 
 .demo__controls h5 {

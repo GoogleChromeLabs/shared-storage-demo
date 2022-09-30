@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 async function measureUniqueReach() {
+  const statusEl = document.querySelector('.demo__report-status');
+  const textContent = statusEl.textContent
   await window.sharedStorage.worklet.addModule('reach-measurement-worklet.js');
-  await window.sharedStorage.run('reach-measurement', { data: { adCampaignId: '1234' } });
+  await window.sharedStorage.run('reach-measurement', { data: { adCampaignId: '1234', textContent } });
 }
 
 measureUniqueReach();

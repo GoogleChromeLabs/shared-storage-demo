@@ -52,15 +52,11 @@
       <div class='demo__gate-header'>
         <h3>Private aggregation output gate</h3>
         <p>The aggregation API is used to report events from a Shared Storage worklet to Aggregation Service to generate
-          summary reports. To test the feature, add the following flag to the command line: 
-          <code class='demo__code-inline-break'>"--args
-            --enable-features=PrivacySandboxAdsAPIsOverride,InterestGroupStorage,Fledge,BiddingAndScoringDebugReportingAPI,AllowURNsInIframes,BrowsingTopics,ConversionMeasurement,FencedFrames,OverridePrivacySandboxSettingsLocalTesting,SharedStorageAPI,PrivateAggregationApi"</code>
-            </p>
+          summary reports. This demo implements the frontend of the API where the report is generated and sent from the client, but does
+          not integrate with Aggregation Service.</p>
         <p>To see the reports transmitted, visit the
           <code>chrome://private-aggregation-internals</code>
           page. You can also click the "Send report" button to send the reports instantly to the server.</p>
-        <p>This demo implements the frontend of the API where the report is generated and sent from the client, but does
-          not integrate with Aggregation Service.</p>
       </div>
       <card class='demo__card--reach-measurement'>
         <h4>Unique reach measurement</h4>
@@ -69,12 +65,9 @@
           <button class='demo__button' onclick="window.open('{{{publisherBUrl}}}/reach-measurement')">Publisher B</button>
         </div>
         <p>
-          An advertiser may want to keep track of how many unique impressions an ad has across different sites.
-        </p>
-        <p>
-          In this demo, visiting either Publisher A or B sites will send the aggregatable report, but will not send it
+          An advertiser may want to keep track of how many unique impressions an ad has across different sites. In this demo, visiting either Publisher A or B sites will send the aggregatable report, but will not send it
           on subsequent visits. The ad camaign ID dimension is encoded into the aggregation key (bucket), and the count
-          is used as the aggregatable value. To reset the demo, click the "Clear impression status" button on the demo
+          is used as the aggregatable value. To reset the demo, click the "Reset impression flag" button on the demo
           page.
         </p>
         <p>

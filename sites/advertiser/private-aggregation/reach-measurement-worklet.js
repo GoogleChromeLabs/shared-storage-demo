@@ -26,11 +26,17 @@ function convertCampaignIdToBucket(adCampaignId) {
 class ReachMeasurementOperation {
   async run(data) {
     try {
+      const { textContent } = data
+      console.log('123', textContent)
+      // const statusEl = document.querySelector('.demo__report-status');
       const key = 'has-seen-ad-campaign';
       const hasSeenAd = await this.sharedStorage.get(key) === 'true';
 
       if (hasSeenAd) {
-        console.log(`[PAA] Unique reach measurement report has been submitted already for ad campaign ${data.adCampaignId}`);
+        const statusText = `Unique reach measurement report has been submitted already for ad campaign ${data.adCampaignId}`
+        textContent = statusText
+        console.log(statusText);
+
         return;
       }
 

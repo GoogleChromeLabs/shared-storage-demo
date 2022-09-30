@@ -112,6 +112,7 @@ card {
   overflow-wrap: break-word;
 }
 
+
 @media screen and (max-width: 800px) {
   .demo__card-container {
     grid-template-columns: 1fr;

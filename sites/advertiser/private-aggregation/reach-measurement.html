@@ -29,7 +29,7 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>"
     />
     <link rel="stylesheet" href="../demo.css" />
-    <script src="reach-measurement.js"></script>
+    <script defer src="reach-measurement.js"></script>
     <script>
       // This button is for resetting the demo, and is not part of the core logic
       function resetSharedStorage() {
@@ -39,11 +39,15 @@
   </head>
 
   <body>
+    <div class="demo__card">
+      <h5>Report status</h5>
+      <div class="demo__report-status">asdf</div>
+    </div>
     <div class="demo__controls" style="margin: 0;">
       <h5>Demo control</h5>
       <div class="demo__buttons-container">
         <button class="mdl-button mdl-js-button mdl-button--raised demo__button" onclick="resetSharedStorage()">
-          Reset ad impression flag
+          Reset impression flag
         </button>
       </div>
     </div>
