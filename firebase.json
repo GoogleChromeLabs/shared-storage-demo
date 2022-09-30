@@ -3,7 +3,11 @@
     {
       "site": "shared-storage-demo",
       "public": "sites/home",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -14,7 +18,11 @@
     {
       "site": "shared-storage-demo-publisher-a",
       "public": "sites/publisher-a",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -25,7 +33,11 @@
     {
       "site": "shared-storage-demo-publisher-b",
       "public": "sites/publisher-b",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
@@ -36,10 +48,18 @@
     {
       "site": "shared-storage-demo-advertiser",
       "public": "sites/advertiser",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "**",
+          "function": "advertiser"
+        },
+        {
+          "source": "/.well-known/**",
           "function": "advertiser"
         }
       ],

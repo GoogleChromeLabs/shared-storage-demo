@@ -27,10 +27,6 @@ p {
   max-inline-size: var(--size-content-4);
 }
 
-.demo__dsp-iframe {
-  height: 590px;
-}
-
 card {
   display: flex;
   flex-direction: column;
@@ -78,8 +74,8 @@ card {
   height: fit-content;
 }
 
-.demo__dsp-iframe--measurement {
-  height: 350px;
+.demo__radio-label {
+  display: block;
 }
 
 @media screen and (min-width: 481px) {

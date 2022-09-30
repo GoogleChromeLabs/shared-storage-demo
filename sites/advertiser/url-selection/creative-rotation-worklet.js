@@ -55,7 +55,7 @@ class SelectURLOperation {
        * - Example: A=70% / B=20% / C=10%
        */
       case 'weighted-distribution':
-        console.log('data = ', JSON.stringify(data))
+        console.log('data = ', JSON.stringify(data));
         // Find the first URL where the cumnulative sum of the weights
         // exceed the random number. The array is sorted by the weight
         // in descending order.

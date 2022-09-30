@@ -22,8 +22,10 @@ main {
   padding: var(--size-5);
 }
 
-p {
+p,
+h3 {
   margin-bottom: var(--size-3);
+  max-inline-size: none;
 }
 
 card {
@@ -81,10 +83,35 @@ card {
 
 .demo__card-container {
   display: grid;
+  gap: var(--size-5);
+}
+
+.demo__code-inline-break {
+  display: inline-block;
+  white-space: normal;
+  max-width: 100%;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.demo__gate-container {
+  background: var(--surface-2);
+  border: 1px solid var(--surface-1);
+  padding: var(--size-4);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-2);
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   gap: var(--size-5);
 }
+
+.demo__gate-header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  overflow-wrap: break-word;
+}
+
 
 @media screen and (max-width: 800px) {
   .demo__card-container {

@@ -3,6 +3,7 @@
   "author": "kevinkiklee",
   "version": "1.0.0",
   "scripts": {
+    "build": "echo",
     "lint": "npx prettier --write .",
     "dev": "firebase emulators:start",
     "shell": "firebase functions:shell",
