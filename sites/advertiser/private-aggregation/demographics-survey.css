@@ -1,0 +1,107 @@
+/**
+ * Copyright 2022 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+:where(h1, h2, h3, h4, h5, h6) {
+  font-weight: var(--font-weight-6);
+}
+
+main {
+  margin: 0 auto;
+  padding: var(--size-5);
+}
+
+p {
+  margin-bottom: var(--size-3);
+  max-inline-size: var(--size-content-4);
+}
+
+card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
+  background: var(--surface-3);
+  border: 1px solid var(--surface-1);
+  padding: var(--size-4);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-2);
+}
+
+.demo__instructions {
+  display: none;
+}
+
+.demo__header {
+  padding: var(--size-5) 0;
+  display: flex;
+  align-items: center;
+}
+
+.demo__publisher-badge {
+  display: flex;
+  margin-right: var(--size-3);
+  justify-content: center;
+  align-items: center;
+  padding: var(--size-3);
+}
+
+.demo__publisher-badge--publisher-a {
+  background-color: var(--green-5);
+}
+
+.demo__publisher-badge--publisher-b {
+  background-color: var(--orange-4);
+}
+
+.demo__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.demo__description {
+  height: fit-content;
+}
+
+.demo__radio-label {
+  display: block;
+}
+
+.demo__survey-container {
+  width: 100%;
+}
+
+@media screen and (min-width: 481px) {
+  main {
+    max-width: 1000px;
+  }
+
+  .demo__content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .demo__description {
+    margin-left: var(--size-3);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .demo__publisher-badge--publisher-a {
+    background-color: var(--green-9);
+  }
+
+  .demo__publisher-badge--publisher-b {
+    background-color: var(--orange-9);
+  }
+}

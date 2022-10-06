@@ -1,0 +1,64 @@
+<main class='demo-container'>
+  <div class='demo__navigation'>
+    <p>
+      [<a href='{{{demoHomeUrl}}}'> Return to main page </a>] [<a href='{{{publisherAUrl}}}/k-freq-measurement'>
+        Go to "Publisher A" page
+      </a>]
+    </p>
+  </div>
+  <div class='demo__header'>
+    <card class='demo__publisher-badge demo__publisher-badge--publisher-b'>
+      <h5>Publisher B</h5>
+    </card>
+    <h3>Shared storage - K-frequency measurement</h3>
+  </div>
+  <div class='demo__content'>
+    <iframe
+      class='demo__dsp-iframe--measurement'
+      src='{{{advertiserUrl}}}/private-aggregation/k-freq-measurement.html'
+    ></iframe>
+    <card class='demo__description'>
+      <h4>Description</h4>
+      <p>
+        You may want to measure the number of users who have seen your content K or more times a given client across
+        different sites.
+      </p>
+      In this demo, the impression count is added to Shared Storage where it increments by 1 whenever the content is
+      loaded for both publisher A and B. When the impression count has reached 3, the Private Aggregation API is called.
+      The content ID dimension is encoded as the aggregation key, and the count is used as the aggregatable value.
+      <p>
+        The summary report generated will provide information such as "Approximately 391 users have seen the ad campaign
+        ID 743 at least 3 times."
+      </p>
+      <h4>Code</h4>
+      <ul>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/advertiser/private-aggregation/k-freq-measurement.js'
+            target='_blank'
+          >Iframe logic</a>
+          (embedded into the publisher page)</li>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/advertiser/private-aggregation/k-freq-measurement-worklet.js'
+            target='_blank'
+          >Worklet</a>
+          (loaded and executed by the iframe logic)</li>
+      </ul>
+    </card>
+  </div>
+  <card class='demo__instructions'>
+    <p>
+      Shared Storage API is not enabled in your browser. Follow the
+      <a
+        href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api'
+        target='_blank'
+      >instructions</a>, and enable the the
+      <b>Privacy Sandbox Ads APIs</b>
+      experiment flag at
+      <b>chrome://flags/#privacy-sandbox-ads-apis</b>
+      with Chrome 104.0.5086.0 and above to test this Shared Storage API demo.
+    </p>
+  </card>
+</main>
+<script defer>
+  checkSharedStorage()
+</script>

@@ -48,4 +48,22 @@ app.get('/payment-provider', (req, res) => {
   });
 });
 
+app.get('/demographics-survey', (req, res) => {
+  const { DEMO_HOME_URL, PUBLISHER_A_URL, PUBLISHER_B_URL, ADVERTISER_URL, PAYMENT_PROVIDER_URL } = process.env;
+
+  res.render('demographics-survey', {
+    demoHomeUrl: DEMO_HOME_URL,
+    publisherAUrl: PUBLISHER_A_URL,
+    publisherBUrl: PUBLISHER_B_URL,
+    advertiserUrl: ADVERTISER_URL,
+    paymentProvider: PAYMENT_PROVIDER_URL,
+  });
+});
+
+app.post('/.well-known/private-aggregation/report-shared-storage', (req, res) => {
+  console.log('\x1b[1;31m%s\x1b[0m', `🚀 Adtech has received an event-level report from the browser`);
+  console.log('REGULAR REPORT RECEIVED (event-level):\n=== \n', req.body, '\n=== \n');
+  res.sendStatus(200);
+});
+
 exports.advertiser = functions.https.onRequest(app);

@@ -11,7 +11,7 @@ The following use-cases have been added:
 
 ## Live demo
 
-Please visit [https://shared-storage-demo.web.app](https://shared-storage-demo.web.app) to see the demo.
+Visit [https://shared-storage-demo.web.app](https://shared-storage-demo.web.app) to see the demo.
 
 ## Enable the flag
 
@@ -31,7 +31,7 @@ The ad rendered in a fenced frame must be served from an HTTPS origin. The ad re
 1. Navigate to the certificate folder: `cd ~/certs`.
 1. Run `mkcert localhost`.
 
-> For an in-depth explanation of this section, please see the ["How to use HTTPS for local development"](https://web.dev/how-to-use-local-https/) article.
+> For an in-depth explanation of this section, see the ["How to use HTTPS for local development"](https://web.dev/how-to-use-local-https/) article.
 
 #### Setup reverse proxy with [nginx](https://www.nginx.com/)
 
