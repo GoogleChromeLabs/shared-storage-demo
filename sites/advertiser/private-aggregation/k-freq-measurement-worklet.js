@@ -19,8 +19,17 @@
  * the signal-to-noise ratio. See “Noise and scaling” section in the
  * Aggregation Fundamentals document to learn more:
  * - https://developer.chrome.com/en/docs/privacy-sandbox/aggregation-fundamentals
+ *
+ * The scale factor used here has been intentionally reduced to an arbitrary number.
+ * The maximum aggregatable value used in this demo is 1. The scale factor
+ * of 65536 would have maximized the signal-to-noise ratio. However, that also
+ * uses the entire contribution budget for the rolling 24-hour period.
+ *
+ * Therefore, the scale factor has been significantly reduced to allow the demo
+ * to be used repeatedly for testing throughout without hitting the contribution
+ * budget limit.
  */
-const SCALE_FACTOR = 65536;
+const SCALE_FACTOR = 128;
 
 /**
  * The bucket key must be a number, and in this case, it is simply the content
@@ -40,7 +49,7 @@ class KFreqMeasurementOperation {
       const hasReportedContentKey = 'has-reported-content';
       const impressionCountKey = 'impression-count';
       const hasReportedContent = (await this.sharedStorage.get(hasReportedContentKey)) === 'true';
-      const impressionCount = parseInt(await this.sharedStorage.get(impressionCountKey));
+      const impressionCount = parseInt((await this.sharedStorage.get(impressionCountKey)) || 0);
 
       // Do not report if a report has been sent already
       if (hasReportedContent) {
@@ -50,7 +59,7 @@ class KFreqMeasurementOperation {
         return;
       }
 
-      // Check ipmression count against frequency limit 
+      // Check ipmression count against frequency limit
       if (impressionCount < kFreq) {
         console.log(
           `[PAA] Current impression count is ${impressionCount} and has not met the K threashold of ${kFreq}`

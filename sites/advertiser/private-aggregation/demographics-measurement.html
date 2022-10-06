@@ -34,6 +34,8 @@
       // This button is for resetting the demo, and is not part of the core logic
       function resetSharedStorage() {
         window.sharedStorage.set('has-reported-content', false);
+        window.sharedStorage.set('age-group', undefined);
+        window.sharedStorage.set('continent', undefined);
       }
     </script>
   </head>
@@ -43,7 +45,7 @@
       <h5>Demo control</h5>
       <div class="demo__buttons-container">
         <button class="mdl-button mdl-js-button mdl-button--raised demo__button" onclick="resetSharedStorage()">
-          Reset report submission status
+          Reset demo
         </button>
       </div>
     </div>

@@ -19,8 +19,17 @@
  * the signal-to-noise ratio. See “Noise and scaling” section in the
  * Aggregation Fundamentals document to learn more:
  * - https://developer.chrome.com/en/docs/privacy-sandbox/aggregation-fundamentals
+ *
+ * The scale factor used here has been intentionally reduced to an arbitrary number.
+ * The maximum aggregatable value used in this demo is 1. The scale factor
+ * of 65536 would have maximized the signal-to-noise ratio. However, that also
+ * uses the entire contribution budget for the rolling 24-hour period.
+ *
+ * Therefore, the scale factor has been significantly reduced to allow the demo
+ * to be used repeatedly for testing throughout without hitting the contribution
+ * budget limit.
  */
-const SCALE_FACTOR = 65536;
+const SCALE_FACTOR = 128;
 
 /**
  * The bucket key must be a number, and in this case, it is simply the ad campaign
@@ -48,7 +57,7 @@ const AGGREGATION_KEY_MAP = {
  * The aggregation key will be in the format of:
  * contentId | ageGroupId | continentId
  *
- * For example, a user from Australia between the age of 40-64, who has 
+ * For example, a user from Australia between the age of 40-64, who has
  * seen the Content ID 321 will be represented by the key:
  * 321 | 2 | 4 or 32124
  */

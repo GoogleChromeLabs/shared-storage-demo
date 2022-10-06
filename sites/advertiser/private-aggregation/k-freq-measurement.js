@@ -15,13 +15,8 @@
  */
 
 async function injectAd() {
-  // Load the Shared Storage worklet 
+  // Load the Shared Storage worklet
   await window.sharedStorage.worklet.addModule('k-freq-measurement-worklet.js');
-
-  // Set the initial impression count
-  window.sharedStorage.set('impression-count', 0, {
-    ignoreIfPresent: true,
-  });
 
   // Run the K-frequency measurement operation
   await window.sharedStorage.run('k-freq-measurement', { data: { kFreq: 3, contentId: 123, debug_key: 999 } });
