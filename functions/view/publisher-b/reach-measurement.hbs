@@ -1,0 +1,62 @@
+<main class='demo-container'>
+  <div class='demo__navigation'>
+    <p>
+      [<a href='{{{demoHomeUrl}}}'> Return to main page </a>] [<a href='{{{publisherBUrl}}}/reach-measurement'>
+        Go to "Publisher A" page
+      </a>]
+    </p>
+  </div>
+  <div class='demo__header'>
+    <card class='demo__publisher-badge demo__publisher-badge--publisher-a'>
+      <h5>Publisher B</h5>
+    </card>
+    <h3>Shared storage - Reach measurement</h3>
+  </div>
+  <div class='demo__content'>
+    <iframe
+      class='demo__dsp-iframe--measurement'
+      src='{{{advertiserUrl}}}/private-aggregation/reach-measurement.html'
+    ></iframe>
+    <card class='demo__description'>
+      <h4>Description</h4>
+      <p>
+        You may want to keep track of how many unique impressions your content has across different sites. In this demo,
+        visiting either Publisher A or B sites will send the aggregatable report, but will not send it on subsequent
+        visits. The ad camaign ID dimension is encoded into the aggregation key (bucket), and the count is used as the
+        aggregatable value. To reset the demo, click the "Reset impression flag" button on the demo page.
+      </p>
+      <p>
+        The summary report will contain information such as "Approximately 391 users have seen the ad campaign ID 743."
+      </p>
+      <h4>Code</h4>
+      <ul>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/advertiser/private-aggregation/reach-measurement.js'
+            target='_blank'
+          >Iframe logic</a>
+          (embedded into the publisher page)</li>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/advertiser/private-aggregation/reach-measurement-worklet.js'
+            target='_blank'
+          >Worklet</a>
+          (loaded and executed by the iframe logic)</li>
+      </ul>
+    </card>
+  </div>
+  <card class='demo__instructions'>
+    <p>
+      Shared Storage API is not enabled in your browser. Follow the
+      <a
+        href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api'
+        target='_blank'
+      >instructions</a>, and enable the the
+      <b>Privacy Sandbox Ads APIs</b>
+      experiment flag at
+      <b>chrome://flags/#privacy-sandbox-ads-apis</b>
+      with Chrome 104.0.5086.0 and above to test this Shared Storage API demo.
+    </p>
+  </card>
+</main>
+<script defer>
+  checkSharedStorage()
+</script>
