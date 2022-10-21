@@ -18,7 +18,7 @@ async function measureDemographics() {
   await window.sharedStorage.worklet.addModule('demographics-measurement-worklet.js');
 
   // Run the demographics measurement operation
-  await window.sharedStorage.run('demographics-measurement', { data: { contentId: '123', debug_key: 888 } });
+  await window.sharedStorage.run('demographics-measurement', { data: { contentId: '123', debug_key: 888n } });
 }
 
 measureDemographics();
