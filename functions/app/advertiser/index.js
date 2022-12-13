@@ -60,8 +60,15 @@ app.get('/demographics-survey', (req, res) => {
   });
 });
 
+app.post('/report/hover', (req, res) => {
+  console.log('\x1b[1;31m%s\x1b[0m', `🚀 You have received an event-level report from the browser`);
+  console.log('QUERY PARAMS RECEIVED (event-level):\n=== \n', req.query, '\n=== \n');
+  console.log('PAYLOAD RECEIVED (event-level):\n=== \n', req.body, '\n=== \n');
+  res.sendStatus(200);
+});
+
 app.post('/.well-known/private-aggregation/report-shared-storage', (req, res) => {
-  console.log('\x1b[1;31m%s\x1b[0m', `🚀 Adtech has received an event-level report from the browser`);
+  console.log('\x1b[1;31m%s\x1b[0m', `🚀 You have received an event-level report from the browser`);
   console.log('REGULAR REPORT RECEIVED (event-level):\n=== \n', req.body, '\n=== \n');
   res.sendStatus(200);
 });
