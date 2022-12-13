@@ -33,6 +33,33 @@
       <b>chrome://flags/#privacy-sandbox-ads-apis</b>.</p>
   </div>
   <section class='demo__card-container'>
+        <section class='demo__gate-container'>
+      <div class='demo__gate-header'>
+        <h3>Common use cases</h3>
+        This section provides demos for some common use cases with Shared Storage
+      </div>
+      <card class='demo__card--hover-event'>
+        <h4>Measuring a hover event inside a fenced frame rendered</h4>
+        <div class='demo__button-container'>
+          <button class='demo__button' onclick="window.open('{{{publisherAUrl}}}/hover-event', '_self')">Publisher</button>
+        </div>
+        <p>
+          When a content is rendered into a fenced frame via selectUrl(), an event-level reports can be created with <a href="" target="_blank">Fenced Frames Ads Reporting API</a>. This demo shows you how the metadata for a URL can be associated with an event that occurs inside a fenced frame
+        </p>
+      </card>
+      <card class='demo__card--top-level-nav'>
+        <h4>Top-level navigation</h4>
+        <div class='demo__button-container'>
+          <button
+            class='demo__button'
+            onclick="window.open('{{{publisherAUrl}}}/top-level-nav', '_self')"
+          >Publisher</button>
+        </div>
+        <p>
+          Whenever the fenced frame navigates the top-level frame to another page, the <a href="https://github.com/WICG/shared-storage#budgeting" target="_blank">entropy budget</a> is decreased. This demo shows allows you to see how the budget decreases.
+        </p>
+      </card>
+    </section>
     <section class='demo__gate-container'>
       <div class='demo__gate-header'>
         <h3>Private aggregation output gate</h3>
@@ -48,7 +75,7 @@
           >Aggregation Service</a>.</p>
         <p>To see the reports transmitted, visit the
           <code>chrome://private-aggregation-internals</code>
-          page. You can also click the "Send report" button to send the reports instantly to the server.</p>
+          page. You can also hover the "Send report" button to send the reports instantly to the server.</p>
         <p><b>Open the DevTools console to see the demo output.</b></p>
       </div>
       <card class='demo__card--reach-measurement'>
@@ -63,7 +90,7 @@
           You may want to keep track of how many unique impressions your content has across different sites. In this
           demo, visiting either Publisher A or B sites will send the aggregatable report, but will not send it on
           subsequent visits. The ad camaign ID dimension is encoded into the aggregation key (bucket), and the count is
-          used as the aggregatable value. To reset the demo, click the "Reset impression flag" button on the demo page.
+          used as the aggregatable value. To reset the demo, hover the "Reset impression flag" button on the demo page.
         </p>
         <p>
           The summary report will contain information such as "Approximately 391 users have seen the ad campaign ID
