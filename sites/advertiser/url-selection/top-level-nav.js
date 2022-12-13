@@ -18,7 +18,9 @@
 // development localhost URL vs production URL
 const advertiserUrl = window.location.host;
 const AD_URLS = [
-  { url: `https://${advertiserUrl}/ads/nav-ad.html` },
+  { url: `https://${advertiserUrl}/ads/nav-ad-1.html` },
+  { url: `https://${advertiserUrl}/ads/nav-ad-2.html` },
+  { url: `https://${advertiserUrl}/ads/nav-ad-3.html` },
 ];
 
 async function injectAd() {
