@@ -34,17 +34,17 @@
       ]
     },
     {
-      "site": "shared-storage-demo-advertiser",
-      "public": "sites/advertiser",
+      "site": "shared-storage-demo-content-producer",
+      "public": "sites/content-producer",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
           "source": "**",
-          "function": "advertiser"
+          "function": "contentProducer"
         },
         {
           "source": "/.well-known/**",
-          "function": "advertiser"
+          "function": "contentProducer"
         }
       ],
       "headers": [

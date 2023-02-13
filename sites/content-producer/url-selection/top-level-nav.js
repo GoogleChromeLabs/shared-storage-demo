@@ -16,24 +16,19 @@
 
 // For demo purposes. The hostname is used to determine the usage of
 // development localhost URL vs production URL
-const advertiserUrl = window.location.host;
-
+const contentProducerUrl = window.location.host;
 const AD_URLS = [
-  { url: `https://${advertiserUrl}/ads/default-ad.html` },
-  { url: `https://${advertiserUrl}/ads/example-ad.html` },
+  { url: `https://${contentProducerUrl}/ads/nav-ad-1.html` },
+  { url: `https://${contentProducerUrl}/ads/nav-ad-2.html` },
+  { url: `https://${contentProducerUrl}/ads/nav-ad-3.html` },
 ];
 
 async function injectAd() {
   // Load the worklet module
-  await window.sharedStorage.worklet.addModule('frequency-cap-worklet.js');
+  await window.sharedStorage.worklet.addModule('top-level-nav-worklet.js');
 
-  // Set the initial frequency cap to 5
-  window.sharedStorage.set('frequency-cap-count', 5, {
-    ignoreIfPresent: true,
-  });
-
-  // Run the URL selection operation to choose an ad based on the frequency cap in shared storage
-  const opaqueURL = await window.sharedStorage.selectURL('frequency-cap', AD_URLS);
+  // Run the URL selection operation to select an ad based on the experiment group in shared storage
+  const opaqueURL = await window.sharedStorage.selectURL('top-level-nav', AD_URLS);
 
   // Render the opaque URL into a fenced frame
   document.getElementById('ad-slot').src = opaqueURL;

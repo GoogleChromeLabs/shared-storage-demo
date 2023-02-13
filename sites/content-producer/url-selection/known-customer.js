@@ -16,26 +16,28 @@
 
 // For demo purposes. The hostname is used to determine the usage of
 // development localhost URL vs production URL
-const CONTENT_ID = 1234;
-const advertiserUrl = window.location.host;
+const contentProducerUrl = window.location.host;
+
+// The first URL is the "register" button to be rendered if the user is not known
 const AD_URLS = [
-  { 
-    url: `https://${advertiserUrl}/ads/hover-ad.html`,
-    reportingMetadata: {
-      hover: `https://${advertiserUrl}/report/hover?contentId=${CONTENT_ID}`
-    }
-  }
+  { url: `https://${contentProducerUrl}/ads/register-button.html` },
+  { url: `https://${contentProducerUrl}/ads/buy-now-button.html` },
 ];
 
 async function injectAd() {
   // Load the worklet module
-  await window.sharedStorage.worklet.addModule('hover-event-worklet.js');
+  await window.sharedStorage.worklet.addModule('known-customer-worklet.js');
 
-  // Run the URL selection operation to select an ad based on the experiment group in shared storage
-  const opaqueURL = await window.sharedStorage.selectURL('hover-event', AD_URLS);
+  // Set the initial status to unknown ('0' is unknown and '1' is known)
+  window.sharedStorage.set('known-customer', 0, {
+    ignoreIfPresent: true,
+  });
+
+  // Run the URL selection operation to choose the button based on the user status
+  const opaqueURL = await window.sharedStorage.selectURL('known-customer', AD_URLS);
 
   // Render the opaque URL into a fenced frame
-  document.getElementById('ad-slot').src = opaqueURL;
+  document.getElementById('button-slot').src = opaqueURL;
 }
 
 injectAd();

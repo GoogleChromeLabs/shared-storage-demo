@@ -16,20 +16,20 @@
 
 // For demo purposes. The hostname is used to determine the usage of
 // development localhost URL vs production URL
-const advertiserUrl = window.location.host;
+const contentProducerUrl = window.location.host;
 
 // Ad confg with the URL of the ad, a probability weight for rotation, and the clickthrough rate.
 const DEMO_AD_CONFIG = [
   {
-    url: `https://${advertiserUrl}/ads/ad-1.html`,
+    url: `https://${contentProducerUrl}/ads/ad-1.html`,
     weight: 0.7,
   },
   {
-    url: `https://${advertiserUrl}/ads/ad-2.html`,
+    url: `https://${contentProducerUrl}/ads/ad-2.html`,
     weight: 0.2,
   },
   {
-    url: `https://${advertiserUrl}/ads/ad-3.html`,
+    url: `https://${contentProducerUrl}/ads/ad-3.html`,
     weight: 0.1,
   },
 ];
