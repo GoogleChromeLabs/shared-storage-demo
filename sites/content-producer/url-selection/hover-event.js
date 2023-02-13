@@ -16,19 +16,23 @@
 
 // For demo purposes. The hostname is used to determine the usage of
 // development localhost URL vs production URL
-const advertiserUrl = window.location.host;
+const CONTENT_ID = 1234;
+const contentProducerUrl = window.location.host;
 const AD_URLS = [
-  { url: `https://${advertiserUrl}/ads/nav-ad-1.html` },
-  { url: `https://${advertiserUrl}/ads/nav-ad-2.html` },
-  { url: `https://${advertiserUrl}/ads/nav-ad-3.html` },
+  { 
+    url: `https://${contentProducerUrl}/ads/hover-ad.html`,
+    reportingMetadata: {
+      hover: `https://${contentProducerUrl}/report/hover?contentId=${CONTENT_ID}`
+    }
+  }
 ];
 
 async function injectAd() {
   // Load the worklet module
-  await window.sharedStorage.worklet.addModule('top-level-nav-worklet.js');
+  await window.sharedStorage.worklet.addModule('hover-event-worklet.js');
 
   // Run the URL selection operation to select an ad based on the experiment group in shared storage
-  const opaqueURL = await window.sharedStorage.selectURL('top-level-nav', AD_URLS);
+  const opaqueURL = await window.sharedStorage.selectURL('hover-event', AD_URLS);
 
   // Render the opaque URL into a fenced frame
   document.getElementById('ad-slot').src = opaqueURL;

@@ -16,28 +16,27 @@
 
 // For demo purposes. The hostname is used to determine the usage of
 // development localhost URL vs production URL
-const advertiserUrl = window.location.host;
+const contentProducerUrl = window.location.host;
 
-// The first URL is the "register" button to be rendered if the user is not known
 const AD_URLS = [
-  { url: `https://${advertiserUrl}/ads/register-button.html` },
-  { url: `https://${advertiserUrl}/ads/buy-now-button.html` },
+  { url: `https://${contentProducerUrl}/ads/default-ad.html` },
+  { url: `https://${contentProducerUrl}/ads/example-ad.html` },
 ];
 
 async function injectAd() {
   // Load the worklet module
-  await window.sharedStorage.worklet.addModule('known-customer-worklet.js');
+  await window.sharedStorage.worklet.addModule('frequency-cap-worklet.js');
 
-  // Set the initial status to unknown ('0' is unknown and '1' is known)
-  window.sharedStorage.set('known-customer', 0, {
+  // Set the initial frequency cap to 5
+  window.sharedStorage.set('frequency-cap-count', 5, {
     ignoreIfPresent: true,
   });
 
-  // Run the URL selection operation to choose the button based on the user status
-  const opaqueURL = await window.sharedStorage.selectURL('known-customer', AD_URLS);
+  // Run the URL selection operation to choose an ad based on the frequency cap in shared storage
+  const opaqueURL = await window.sharedStorage.selectURL('frequency-cap', AD_URLS);
 
   // Render the opaque URL into a fenced frame
-  document.getElementById('button-slot').src = opaqueURL;
+  document.getElementById('ad-slot').src = opaqueURL;
 }
 
 injectAd();

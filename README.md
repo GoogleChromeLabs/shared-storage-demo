@@ -63,7 +63,7 @@ http {
 4. Stop the `nginx` server with `nginx -s stop`
 5. Restart the `nginx` server with `nginx`
 
-The above `nginx` configuration proxies `https://localhost:4437` to `http://localhost:8087` (Advertiser server).
+The above `nginx` configuration proxies `https://localhost:4437` to `http://localhost:8087` (Content producer server).
 
 ### Setup Firebase
 
