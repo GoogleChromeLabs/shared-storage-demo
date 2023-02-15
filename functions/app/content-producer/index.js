@@ -16,12 +16,16 @@
 const express = require('express');
 const functions = require('firebase-functions');
 const setupView = require('../helpers/setup-view');
+const setupPrivateAggregationTestRoutes = require('./setup-paa-test-routes');
 
 // Read the dev or prod URLs to be used
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 
 // Setup app and view
 const app = setupView(express(), 'content-producer');
+
+// Setup Private Aggregation API test routes
+setupPrivateAggregationTestRoutes(app);
 
 // Setup root route
 app.get('/', (req, res) => {
@@ -64,12 +68,6 @@ app.post('/report/hover', (req, res) => {
   console.log('\x1b[1;31m%s\x1b[0m', `🚀 You have received an event-level report from the browser`);
   console.log('QUERY PARAMS RECEIVED (event-level):\n=== \n', req.query, '\n=== \n');
   console.log('PAYLOAD RECEIVED (event-level):\n=== \n', req.body, '\n=== \n');
-  res.sendStatus(200);
-});
-
-app.post('/.well-known/private-aggregation/report-shared-storage', (req, res) => {
-  console.log('\x1b[1;31m%s\x1b[0m', `🚀 You have received an event-level report from the browser`);
-  console.log('REGULAR REPORT RECEIVED (event-level):\n=== \n', req.body, '\n=== \n');
   res.sendStatus(200);
 });
 

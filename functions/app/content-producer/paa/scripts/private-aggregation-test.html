@@ -1,0 +1,61 @@
+<!--
+ Copyright 2023 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" />
+  <meta name="description" content="Private Aggregation API testing" />
+  <title>Private Aggregation API testing</title>
+  <script>
+    const ORIGIN_TRIAL_TOKEN =
+      'A7hH9M5YSi7PanBca+ZM1gmLeyS2N39jVtswueCTflf6PHJ0KpcYR4OGhxv1gkiOMRmXhYjPMaO3nADEWKEf4gYAAAB+eyJvcmlnaW4iOiJodHRwczovL3NoYXJlZC1zdG9yYWdlLWRlbW8ud2ViLmFwcDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1RoaXJkUGFydHkiOnRydWV9';
+
+    function setup3pOriginTrialToken() {
+      const otMeta = document.createElement('meta');
+      otMeta.httpEquiv = 'origin-trial';
+      otMeta.content = ORIGIN_TRIAL_TOKEN;
+      document.head.append(otMeta);
+    }
+
+    async function runPrivateAggregationTest() {
+      // The key is a random 5 or 6 digit integer
+      window.sharedStorage.set('test-key', Math.round(Math.random() * 1e6));
+      // The value is a random single digit integer
+      window.sharedStorage.set('test-value', Math.round(Math.random() * 10));
+
+      await window.sharedStorage.worklet.addModule(
+        `https://shared-storage-demo-content-producer.web.app/paa/scripts/private-aggregation-test-worklet.js`
+      );
+
+      window.sharedStorage.run('private-aggregation-test');
+    }
+
+    try {
+      setup3pOriginTrialToken();
+
+      if ('sharedStorage' in window) {
+        runPrivateAggregationTest();
+      }
+    } catch {}
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
