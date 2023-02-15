@@ -15,5 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "prettier": "^2.6.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5"
   }
 }
