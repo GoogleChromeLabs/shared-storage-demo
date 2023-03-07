@@ -15,15 +15,20 @@
  */
 
 const DEBUG_MODE_CHANCE = 0.5;
+const TEST_DEBUG_KEY = 54321;
 
 class PrivateAggregationTest {
   async run() {
     const testKey = await this.sharedStorage.get('test-key');
     const testValue = await this.sharedStorage.get('test-value');
 
+    if (!testKey || !testValue) {
+      return;
+    }
+
     if (Math.random() < DEBUG_MODE_CHANCE) {
       // The debug key is a random 15 or 16 digit integer
-      const debug_key = BigInt(Math.round(Math.random() * 1e16));
+      const debug_key = BigInt(TEST_DEBUG_KEY);
       privateAggregation.enableDebugMode({ debug_key });
     }
 
@@ -31,6 +36,9 @@ class PrivateAggregationTest {
       bucket: BigInt(testKey),
       value: parseInt(testValue),
     });
+
+    this.sharedStorage.delete('test-key');
+    this.sharedStorage.delete('test-value');
   }
 }
 
