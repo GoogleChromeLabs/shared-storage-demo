@@ -15,7 +15,6 @@
  */
 
 const DEBUG_MODE_CHANCE = 0.5;
-const TEST_DEBUG_KEY = 54321;
 
 class PrivateAggregationTest {
   async run() {
@@ -27,8 +26,7 @@ class PrivateAggregationTest {
     }
 
     if (Math.random() < DEBUG_MODE_CHANCE) {
-      // The debug key is a random 15 or 16 digit integer
-      const debug_key = BigInt(TEST_DEBUG_KEY);
+      const debug_key = BigInt(54321);
       privateAggregation.enableDebugMode({ debug_key });
     }
 
