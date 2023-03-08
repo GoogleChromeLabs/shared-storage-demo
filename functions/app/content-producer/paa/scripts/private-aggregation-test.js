@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
+const PRIVATE_AGGREGATION_TEST_IFRAME_TITLE = 'Private Aggregation API Test'
 const PRIVATE_AGGREGATION_TEST_SCRIPT_URL = 'https://shared-storage-demo-content-producer.web.app/paa/scripts/private-aggregation-test.html';
+
 
 function setupIframe() {
   const body = document.querySelector('body');
@@ -24,6 +26,7 @@ function setupIframe() {
   iframe.style.width = 0;
   iframe.style.top = 0;
   iframe.style.position = 'absolute';
+  iframe.tytle = PRIVATE_AGGREGATION_TEST_IFRAME_TITLE;
   iframe.src = PRIVATE_AGGREGATION_TEST_SCRIPT_URL;
 
   body.appendChild(iframe);
