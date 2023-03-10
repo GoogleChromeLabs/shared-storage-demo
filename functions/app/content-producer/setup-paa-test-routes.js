@@ -17,18 +17,6 @@ const fs = require('fs');
 const cors = require('cors');
 
 function setupPrivateAggregationTestRoutes(app) {
-  app.post('/.well-known/private-aggregation/report-shared-storage', (req, res) => {
-    console.log('\x1b[1;31m%s\x1b[0m', `🚀 You have received an event-level report from the browser`);
-    console.log('REGULAR REPORT RECEIVED (event-level):\n=== \n', req.body, '\n=== \n');
-    res.sendStatus(200);
-  });
-
-  app.post('/.well-known/debug/private-aggregation/report-shared-storage', (req, res) => {
-    console.log('\x1b[1;31m%s\x1b[0m', `🚀 You have received an event-level report from the browser`);
-    console.log('DEBUG REPORT RECEIVED (event-level):\n=== \n', req.body, '\n=== \n');
-    res.sendStatus(200);
-  });
-
   app.get('/paa/get-reports', (req, res) => {});
 
   app.get('/paa/scripts/private-aggregation-test.js', cors(), async (req, res) => {
@@ -41,6 +29,7 @@ function setupPrivateAggregationTestRoutes(app) {
       res.status(500);
     }
 
+    res.type('.js');
     res.send(response);
   });
 

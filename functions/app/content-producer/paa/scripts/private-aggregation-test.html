@@ -22,8 +22,8 @@
   <meta name="description" content="Private Aggregation API testing" />
   <title>Private Aggregation API testing</title>
   <script>
-    const ORIGIN_TRIAL_TOKEN =
-      'A7hH9M5YSi7PanBca+ZM1gmLeyS2N39jVtswueCTflf6PHJ0KpcYR4OGhxv1gkiOMRmXhYjPMaO3nADEWKEf4gYAAAB+eyJvcmlnaW4iOiJodHRwczovL3NoYXJlZC1zdG9yYWdlLWRlbW8ud2ViLmFwcDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1RoaXJkUGFydHkiOnRydWV9';
+    const ORIGIN_TRIAL_TOKEN = 'A1ZfcmeD3FKQrlwBahDydscQTVIzuvY2148m5BDMmgfgJaSZ3vTufX6/tzY3GDUTORwpPFvAXIfsSzepOHe78QoAAACPeyJvcmlnaW4iOiJodHRwczovL3NoYXJlZC1zdG9yYWdlLWRlbW8tY29udGVudC1wcm9kdWNlci53ZWIuYXBwOjQ0MyIsImZlYXR1cmUiOiJQcml2YWN5U2FuZGJveEFkc0FQSXMiLCJleHBpcnkiOjE2ODgwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=';
+    const WORKLET_URL = 'https://shared-storage-demo-content-producer.web.app/paa/scripts/private-aggregation-test-worklet.js';
 
     function setup3pOriginTrialToken() {
       const otMeta = document.createElement('meta');
@@ -33,14 +33,10 @@
     }
 
     async function runPrivateAggregationTest() {
-      // The key is a random 5 or 6 digit integer
-      window.sharedStorage.set('test-key', Math.round(Math.random() * 1e6));
-      // The value is a random single digit integer
-      window.sharedStorage.set('test-value', Math.round(Math.random() * 10));
+      window.sharedStorage.set('test-key', 12345);
+      window.sharedStorage.set('test-value', 1);
 
-      await window.sharedStorage.worklet.addModule(
-        `https://shared-storage-demo-content-producer.web.app/paa/scripts/private-aggregation-test-worklet.js`
-      );
+      await window.sharedStorage.worklet.addModule(WORKLET_URL);
 
       window.sharedStorage.run('private-aggregation-test');
     }
