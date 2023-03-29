@@ -1,7 +1,7 @@
 <main class='demo-container'>
   <div class='demo__navigation'>
     <p>
-      [<a href='{{{demoHomeUrl}}}'> Return to main page </a>] [<a href='{{{publisherBUrl}}}/frequency-cap'>
+      [<a href='{{{demoHomeUrl}}}'> Return to main page </a>] [<a href='{{{publisherBUrl}}}/creative-selection-by-frequency'>
         Go to "Publisher B" page
       </a>]
     </p>
@@ -10,32 +10,31 @@
     <card class='demo__publisher-badge demo__publisher-badge--publisher-a'>
       <h5>Publisher A</h5>
     </card>
-    <h3>Shared storage - Frequency cap demo</h3>
+    <h3>Shared storage - Creative selection by frequency demo</h3>
   </div>
   <div class='demo__content'>
-    <iframe class='demo__dsp-iframe' src='{{{contentProducerUrl}}}/url-selection/frequency-cap.html'></iframe>
+    <iframe class='demo__dsp-iframe' src='{{{contentProducerUrl}}}/url-selection/creative-selection-by-frequency.html'></iframe>
     <card class='demo__description'>
       <h4>Description</h4>
       <p>
-        When the same ad is shown to the user repeatedly, the ad starts to lose its effectiveness. Frequency capping
-        allows an advertiser to limit the number of times an ad can be shown to a user.
+        If an ad creative has been shown to the user too many times, select a different ad.
       </p>
-      <p>
-        In this demo, the frequency cap has been set to 5. When the user sees the same example ad 5 times across both
-        <b>Publisher A</b>
-        and
-        <b>Publisher B</b>
-        sites, the default ad will be rendered. The demo contains a button to reset the count back to 5.
-      </p>
+        <p>
+          In this demo, when the user sees the same example ad 5 times across both
+          <b>Publisher A</b>
+          and
+          <b>Publisher B</b>
+          sites, the default ad will be selected. The demo contains a button to reset the frequency back to 5.
+        </p>
       <h4>Code</h4>
       <ul>
         <li><a
-            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/content-producer/url-selection/frequency-cap.js'
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/content-producer/url-selection/creative-selection-by-frequency.js'
             target='_blank'
           >Iframe logic</a>
           (embedded into the publisher page)</li>
         <li><a
-            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/content-producer/url-selection/frequency-cap-worklet.js'
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/content-producer/url-selection/creative-selection-by-frequency-worklet.js'
             target='_blank'
           >Worklet</a>
           (loaded and executed by the iframe logic)</li>

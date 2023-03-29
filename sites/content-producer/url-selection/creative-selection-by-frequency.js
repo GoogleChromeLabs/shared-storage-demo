@@ -25,15 +25,15 @@ const AD_URLS = [
 
 async function injectAd() {
   // Load the worklet module
-  await window.sharedStorage.worklet.addModule('frequency-cap-worklet.js');
+  await window.sharedStorage.worklet.addModule('creative-selection-by-frequency-worklet.js');
 
   // Set the initial frequency cap to 5
-  window.sharedStorage.set('frequency-cap-count', 5, {
+  window.sharedStorage.set('frequency-count', 0, {
     ignoreIfPresent: true,
   });
 
   // Run the URL selection operation to choose an ad based on the frequency cap in shared storage
-  const opaqueURL = await window.sharedStorage.selectURL('frequency-cap', AD_URLS);
+  const opaqueURL = await window.sharedStorage.selectURL('creative-selection-by-frequency', AD_URLS);
 
   // Render the opaque URL into a fenced frame
   document.getElementById('ad-slot').src = opaqueURL;
