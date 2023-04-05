@@ -1,0 +1,59 @@
+
+<main class='demo-container'>
+  <div class='demo__navigation'>
+    <p>[<a href='{{{demoHomeUrl}}}'> Return to main page </a>]</p>
+  </div>
+  <div class='demo__header'>
+    <card class='demo__publisher-badge demo__publisher-badge--publisher-a'>
+      <h5>Publisher A</h5>
+    </card>
+    <h3>Shared storage - Third-party write destination demo</h3>
+  </div>
+  <div class='demo__content'>
+
+    {{!-- This third-party script writes data to the publisher's shared storage --}}
+    <script src='{{{contentProducerUrl}}}/use-cases/third-party-write.js'></script>
+
+    {{!-- This third-party iframe's code writes data to its own shared storage --}}
+    <iframe class='demo__dsp-iframe' src='{{{contentProducerUrl}}}/use-cases/third-party-write.html'></iframe>
+
+    <card class='demo__description'>
+      <h4>Description</h4>
+      <p>
+        When a third-party code is added to the publisher's page, the third-party can write to the shared storage of their own origin, or write to the publisher's origin.
+      </p>
+      <p>
+        Using a <code>script</code> tag allows the third-party code to be injected in the publisher's context, and using an <code>iframe</code> to load third-party code allows third-party to write to its own shared storage.
+      </p>
+      <h4>Code</h4>
+      <ul>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/content-producer/use-cases/third-party-write.html'
+            target='_blank'
+          >Code for third-party to write into its own shared storage</a>
+        </li>
+        <li><a
+            href='https://github.com/GoogleChromeLabs/shared-storage-demo/blob/main/sites/content-producer/use-cases/third-party-write.js'
+            target='_blank'
+          >Code for third-party to write into publisher's shared storage</a>
+          </li>
+      </ul>
+    </card>
+  </div>
+  <card class='demo__instructions'>
+    <p>
+      Shared Storage API is not enabled in your browser. Follow the
+      <a
+        href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api'
+        target='_blank'
+      >instructions</a>, and enable the the
+      <b>Privacy Sandbox Ads APIs</b>
+      experiment flag at
+      <b>chrome://flags/#privacy-sandbox-ads-apis</b>
+      with Chrome 104.0.5086.0 and above to test this Shared Storage API demo.
+    </p>
+  </card>
+</main>
+<script defer>
+  checkSharedStorage()
+</script>
