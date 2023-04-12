@@ -27,8 +27,8 @@ function renderOutput({ bucketInBinary, valueInBinary }) {
 // Converts the number to a binary string
 function covertToBinary(input) {
   return input
-    // Filter out 0's 
-    .filter((n) => n != '0')
+    // Filter out 0s 
+    .filter((n) => n)
     // Converts number to binary, and moves it to an array from a typed array to an array
     .reduce((acc, n) => [...acc, n.toString(2)], [])
     // Pad the left of the value and make it a length of 8
