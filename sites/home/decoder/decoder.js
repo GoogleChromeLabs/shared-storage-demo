@@ -17,14 +17,15 @@
 // Placeholder for 8-bits to be used for padding
 const ZEROES_FOR_PADDING = '00000000';
 
-function renderOutput({ decodedBucket, decodedValue }) {
-  document.querySelector('.decoder__bucket--binary').innerHTML = decodedBucket;
-  document.querySelector('.decoder__bucket--decimal').innerHTML = BigInt(parseInt(decodedBucket, 2));
-  document.querySelector('.decoder__value--binary').innerHTML = decodedValue;
-  document.querySelector('.decoder__value--decimal').innerHTML = BigInt(parseInt(decodedValue, 2));
+function renderOutput({ bucketInBinary, valueInBinary }) {
+  document.querySelector('.decoder__bucket--binary').innerHTML = bucketInBinary;
+  document.querySelector('.decoder__bucket--decimal').innerHTML = BigInt(parseInt(bucketInBinary, 2));
+  document.querySelector('.decoder__value--binary').innerHTML = valueInBinary;
+  document.querySelector('.decoder__value--decimal').innerHTML = BigInt(parseInt(valueInBinary, 2));
 }
 
-function decode(input) {
+// Converts the number to binary and formats it to the length of 8
+function covertToBinary(input) {
   return input
     .reduce((acc, n) => [...acc, n.toString(2)], [])
     .filter((n) => n != '0')
@@ -33,14 +34,17 @@ function decode(input) {
 }
 
 async function decodePayload(payload) {
+  // Base64 decode
   const buffer = new Uint8Array([...atob(payload)].map((c) => c.charCodeAt(0)));
+
+  // CBOR decode
   const {
     data: [{ bucket, value }],
   } = await cbor.decodeFirst(buffer);
 
   return {
-    decodedBucket: decode(bucket),
-    decodedValue: decode(value),
+    bucketInBinary: covertToBinary(bucket),
+    valueInBinary: covertToBinary(value),
   };
 }
 
