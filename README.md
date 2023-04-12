@@ -1,3 +1,5 @@
+> Some test blockquote
+
 # Shared storage demo
 
 This demo shows some [Shared Storage API](https://developer.chrome.com/docs/privacy-sandbox/shared-storage/) use cases.
@@ -8,6 +10,10 @@ The following use-cases have been added:
 - A/B testing
 - Creative rotation
 - Known customer
+
+```
+Some code
+```
 
 ## Live demo
 
