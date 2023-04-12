@@ -24,23 +24,27 @@ function renderOutput({ bucketInBinary, valueInBinary }) {
   document.querySelector('.decoder__value--decimal').innerHTML = BigInt(parseInt(valueInBinary, 2));
 }
 
-// Converts the number to binary and formats it to the length of 8
+// Converts the number to a binary string
 function covertToBinary(input) {
   return input
-    .reduce((acc, n) => [...acc, n.toString(2)], [])
+    // Filter out 0's 
     .filter((n) => n != '0')
+    // Converts number to binary, and moves it to an array from a typed array to an array
+    .reduce((acc, n) => [...acc, n.toString(2)], [])
+    // Pad the left of the value and make it a length of 8
     .map((n) => ZEROES_FOR_PADDING.slice(0, 8 - n.length) + n)
     .join('');
 }
 
 async function decodePayload(payload) {
   // Base64 decode
-  const buffer = new Uint8Array([...atob(payload)].map((c) => c.charCodeAt(0)));
+  const arr = new Uint8Array([...atob(payload)]
+    .map((c) => c.charCodeAt(0)));
 
   // CBOR decode
   const {
     data: [{ bucket, value }],
-  } = await cbor.decodeFirst(buffer);
+  } = await cbor.decodeFirst(arr);
 
   return {
     bucketInBinary: covertToBinary(bucket),
