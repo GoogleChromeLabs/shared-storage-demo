@@ -1,0 +1,78 @@
+<!--
+ Copyright 2022 Google LLC
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+      http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8' />
+  <meta http-equiv='X-UA-Compatible' />
+  <meta property='og:image' content='../assets/privacy-sandbox-logo.png' />
+  <meta property='og:title' content='Debug payload decoder for PAA' />
+  <meta property='og:description' content='Decode the debug payload from an aggregatable report for the Private Aggregation API' />
+  <meta name='description' content='Decode the debug payload from an aggregatable report for the Private Aggregation API' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0' />
+  <title>Debug payload decoder</title>
+  <link rel='icon'
+    href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>' />
+
+  <link rel='stylesheet' href='https://unpkg.com/open-props' />
+  <link rel='stylesheet' href='https://unpkg.com/open-props/normalize.min.css' />
+  <link rel='stylesheet' href='https://unpkg.com/open-props/buttons.min.css' />
+  <link rel='stylesheet' href='../index.css' />
+  <link rel='stylesheet' href='decoder.css' />
+  <script src='https://unpkg.com/bignumber.js'></script> <!-- optional -->
+  <script src='https://unpkg.com/cbor-web'></script>
+  <script defer src="decoder.js"></script>
+</head>
+
+<body>
+  <main class='demo-container'>
+    <div class='demo__header'>
+      <img src='../assets/privacy-sandbox-logo.png' />
+      <h2>Debug payload decoder for the Private Aggregation API</h2>
+    </div>
+    <section class='demo__gate-container'>
+      <div class='demo__gate-header'>
+        <h4>INPUT</h4>
+        <p>Copy-paste your debug payload below</p>
+        <input class="decoder__input" type="text">
+        <br>
+        <button class="demo__button decoder__run" onclick="runDecoder()">Decode</button>
+      </div>
+    </section>
+    <section class='demo__gate-container decoder__output-container'>
+      <div class='demo__gate-header'>
+        <h4>OUTPUT</h4>
+        <table class="decoder__output-table">
+          <tr>
+            <th>&nbsp</th>
+            <th>Binary</th>
+            <th>Decimal</th>
+          </tr>
+          <tr>
+            <th>Bucket</th>
+            <td class="decoder__bucket--binary">-</td>
+            <td class="decoder__bucket--decimal">-</td>
+          </tr>
+          <tr>
+            <th>Value</th>
+            <td class="decoder__value--binary">-</td>
+            <td class="decoder__value--decimal">-</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
