@@ -59,6 +59,18 @@
           Whenever the fenced frame navigates the top-level frame to another page, the <a href="https://github.com/WICG/shared-storage#budgeting" target="_blank">entropy budget</a> is decreased. This demo shows allows you to see how the budget decreases.
         </p>
       </card>
+      <card class='demo__card--top-level-nav'>
+        <h4>Controlling where third-party can write to</h4>
+        <div class='demo__button-container'>
+          <button
+            class='demo__button'
+            onclick="window.open('{{{publisherAUrl}}}/third-party-write', '_self')"
+          >Publisher</button>
+        </div>
+        <p>
+          When a third-party code is added to the publisher's page, the third-party can write to the shared storage of their own origin, or write to the publisher's origin. This demo illustrates the mechanisms for controlling the document origin that determines whose shared storage that data is written into.
+        </p>
+      </card>
     </section>
     <section class='demo__gate-container'>
       <div class='demo__gate-header'>
