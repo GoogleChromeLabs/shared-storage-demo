@@ -14,26 +14,28 @@
  * limitations under the License.
  */
 
-class SelectURLOperation {
+const FREQUENCY_LIMIT = 5;
+
+class CreativeSelectionByFrequencyOperation {
   async run(urls, data) {
     // Read the current frequency cap in shared storage
-    const count = parseInt(await this.sharedStorage.get('frequency-cap-count'));
+    const count = parseInt(await this.sharedStorage.get('frequency-count'));
 
     // Log to console for the demo
     console.log(`urls = ${JSON.stringify(urls)}`);
-    console.log(`frequency-cap-count in shared storage is ${count}`);
+    console.log(`frequency-count in shared storage is ${count}`);
 
     // If the count is 0, the frequency cap has been reached
-    if (count === 0) {
-      console.log('frequency cap has been reached, and the default ad will be rendered');
+    if (count === FREQUENCY_LIMIT) {
+      console.log('frequency limit has been reached, and the default ad will be rendered');
       return 0;
     }
 
-    // Set the new frequency count in shared storage
-    await this.sharedStorage.set('frequency-cap-count', (count - 1).toString());
+    // Increment the frequency
+    await this.sharedStorage.set('frequency-count', count + 1);
     return 1;
   }
 }
 
-// Register the operation as 'frequency-cap'
-register('frequency-cap', SelectURLOperation);
+// Register the operation
+register('creative-selection-by-frequency', CreativeSelectionByFrequencyOperation);

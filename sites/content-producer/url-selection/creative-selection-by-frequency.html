@@ -29,11 +29,11 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙂</text></svg>"
     />
     <link rel="stylesheet" href="../demo.css" />
-    <script src="frequency-cap.js"></script>
+    <script src="creative-selection-by-frequency.js"></script>
     <script>
       // This button is for resetting the demo, and is not part of the core logic
       function resetSharedStorage() {
-        window.sharedStorage.set('frequency-cap-count', '5');
+        window.sharedStorage.set('frequency-count', 0);
       }
     </script>
   </head>
@@ -44,7 +44,7 @@
       <h5>Demo control</h5>
       <div class="demo__buttons-container">
         <button class="mdl-button mdl-js-button mdl-button--raised demo__button" onclick="resetSharedStorage()">
-          Reset frequency cap to 5
+          Reset frequency count
         </button>
       </div>
     </div>
