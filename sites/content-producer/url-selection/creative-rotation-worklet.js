@@ -17,7 +17,7 @@
 class SelectURLOperation {
   async run(urls, data) {
     // Read the rotation mode from Shared Storage
-    const rotationMode = await this.sharedStorage.get('creative-rotation-mode');
+    const rotationMode = await sharedStorage.get('creative-rotation-mode');
 
     // Generate a random number to be used for rotation
     const randomNumber = Math.random();
@@ -31,13 +31,13 @@ class SelectURLOperation {
        * - Example: A -> B -> C -> A ...
        */
       case 'sequential':
-        const currentIndex = await this.sharedStorage.get('creative-rotation-index');
+        const currentIndex = await sharedStorage.get('creative-rotation-index');
         index = parseInt(currentIndex, 10);
         const nextIndex = (index + 1) % urls.length;
 
         console.log(`index = ${index} / next index = ${nextIndex}`);
 
-        await this.sharedStorage.set('creative-rotation-index', nextIndex.toString());
+        await sharedStorage.set('creative-rotation-index', nextIndex.toString());
         break;
 
       /**

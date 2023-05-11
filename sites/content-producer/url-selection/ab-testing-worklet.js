@@ -18,7 +18,7 @@
 class SelectURLOperation {
   async run(urls, data) {
     // Read the user's group from shared storage
-    const experimentGroup = await this.sharedStorage.get('ab-testing-group');
+    const experimentGroup = await sharedStorage.get('ab-testing-group');
 
     // Log to console for the demo
     console.log(`urls = ${JSON.stringify(urls)}`);
