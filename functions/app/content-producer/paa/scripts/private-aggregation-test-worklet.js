@@ -18,8 +18,8 @@ const DEBUG_MODE_CHANCE = 0.5;
 
 class PrivateAggregationTest {
   async run() {
-    const testKey = await this.sharedStorage.get('test-key');
-    const testValue = await this.sharedStorage.get('test-value');
+    const testKey = await sharedStorage.get('test-key');
+    const testValue = await sharedStorage.get('test-value');
 
     if (!testKey || !testValue) {
       return;
@@ -35,8 +35,8 @@ class PrivateAggregationTest {
       value: parseInt(testValue),
     });
 
-    this.sharedStorage.delete('test-key');
-    this.sharedStorage.delete('test-value');
+    sharedStorage.delete('test-key');
+    sharedStorage.delete('test-value');
   }
 }
 

@@ -48,8 +48,8 @@ class KFreqMeasurementOperation {
       // Read from Shared Storage
       const hasReportedContentKey = 'has-reported-content';
       const impressionCountKey = 'impression-count';
-      const hasReportedContent = (await this.sharedStorage.get(hasReportedContentKey)) === 'true';
-      const impressionCount = parseInt((await this.sharedStorage.get(impressionCountKey)) || 0);
+      const hasReportedContent = (await sharedStorage.get(hasReportedContentKey)) === 'true';
+      const impressionCount = parseInt((await sharedStorage.get(impressionCountKey)) || 0);
 
       // Do not report if a report has been sent already
       if (hasReportedContent) {
@@ -64,7 +64,7 @@ class KFreqMeasurementOperation {
         console.log(
           `[PAA] Current impression count is ${impressionCount} and has not met the K threashold of ${kFreq}`
         );
-        await this.sharedStorage.set(impressionCountKey, impressionCount + 1);
+        await sharedStorage.set(impressionCountKey, impressionCount + 1);
         return;
       }
 
@@ -77,7 +77,7 @@ class KFreqMeasurementOperation {
       privateAggregation.sendHistogramReport({ bucket, value });
 
       // Set the report submission status flag
-      await this.sharedStorage.set(hasReportedContentKey, 'true');
+      await sharedStorage.set(hasReportedContentKey, 'true');
 
       console.log(`[PAA] Current impression count is ${impressionCount} which meets the K threashold of ${kFreq}`);
       console.log('[PAA] K-frequency measurement report will be submitted');

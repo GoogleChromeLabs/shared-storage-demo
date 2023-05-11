@@ -19,7 +19,7 @@ const FREQUENCY_LIMIT = 5;
 class CreativeSelectionByFrequencyOperation {
   async run(urls, data) {
     // Read the current frequency cap in shared storage
-    const count = parseInt(await this.sharedStorage.get('frequency-count'));
+    const count = parseInt(await sharedStorage.get('frequency-count'));
 
     // Log to console for the demo
     console.log(`urls = ${JSON.stringify(urls)}`);
@@ -32,7 +32,7 @@ class CreativeSelectionByFrequencyOperation {
     }
 
     // Increment the frequency
-    await this.sharedStorage.set('frequency-count', count + 1);
+    await sharedStorage.set('frequency-count', count + 1);
     return 1;
   }
 }

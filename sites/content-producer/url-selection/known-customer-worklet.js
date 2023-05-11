@@ -16,7 +16,7 @@
 
 class SelectURLOperation {
   async run(urls) {
-    const knownCustomer = await this.sharedStorage.get('known-customer');
+    const knownCustomer = await sharedStorage.get('known-customer');
 
     console.log(`urls = ${JSON.stringify(urls)}`);
     console.log(`known-customer value is ${knownCustomer}`);

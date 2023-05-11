@@ -46,7 +46,7 @@ class ReachMeasurementOperation {
 
       // Read from Shared Storage
       const key = 'has-reported-content';
-      const hasReportedContent = (await this.sharedStorage.get(key)) === 'true';
+      const hasReportedContent = (await sharedStorage.get(key)) === 'true';
 
       // Do not report if a report has been sent already
       if (hasReportedContent) {
@@ -65,7 +65,7 @@ class ReachMeasurementOperation {
       privateAggregation.sendHistogramReport({ bucket, value });
 
       // Set the report submission status flag
-      await this.sharedStorage.set(key, true);
+      await sharedStorage.set(key, true);
 
       console.log(`[PAA] Unique reach measurement report will be submitted for Content ID ${contentId}`);
       console.log(`[PAA] The aggregation key is ${bucket} and the aggregatable value is ${value}`);

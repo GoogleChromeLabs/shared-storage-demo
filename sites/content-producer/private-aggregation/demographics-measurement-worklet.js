@@ -83,9 +83,9 @@ class DemographicsMeasurementOperation {
 
       // Read from Shared Storage
       const key = 'has-reported-content';
-      const hasReportedContent = (await this.sharedStorage.get(key)) === 'true';
-      const ageGroup = await this.sharedStorage.get('age-group');
-      const continent = await this.sharedStorage.get('continent');
+      const hasReportedContent = (await sharedStorage.get(key)) === 'true';
+      const ageGroup = await sharedStorage.get('age-group');
+      const continent = await sharedStorage.get('continent');
 
       // Do not report if a report has been sent already
       if (hasReportedContent) {
@@ -109,7 +109,7 @@ class DemographicsMeasurementOperation {
       privateAggregation.sendHistogramReport({ bucket, value });
 
       // Set the report submission status flag
-      await this.sharedStorage.set(key, true);
+      await sharedStorage.set(key, true);
 
       console.log(`[PAA] Unique reach measurement report will be submitted for Content ID ${data.contentId}`);
       console.log(`[PAA] The aggregation key is ${bucket} and the aggregatable value is ${value}`);
