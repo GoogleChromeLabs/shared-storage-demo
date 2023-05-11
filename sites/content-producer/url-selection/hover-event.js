@@ -31,11 +31,21 @@ async function injectAd() {
   // Load the worklet module
   await window.sharedStorage.worklet.addModule('hover-event-worklet.js');
 
-  // Run the URL selection operation to select an ad based on the experiment group in shared storage
-  const opaqueURL = await window.sharedStorage.selectURL('hover-event', AD_URLS);
+  // Resolve the selectURL call to a fenced frame config only when it exists on the page
+  const resolveToConfig = typeof window.FencedFrameConfig !== 'undefined';
 
-  // Render the opaque URL into a fenced frame
-  document.getElementById('ad-slot').src = opaqueURL;
+  // Run the URL selection operation to select an ad based on the experiment group in shared storage
+  const selectedUrl = await window.sharedStorage.selectURL('hover-event', AD_URLS, {
+    resolveToConfig,
+  });
+
+  const adSlot = document.getElementById('ad-slot');
+
+  if (resolveToConfig && selectedUrl instanceof FencedFrameConfig) {
+    adSlot.config = selectedUrl;
+  } else {
+    adSlot.src = selectedUrl;
+  }
 }
 
 injectAd();
