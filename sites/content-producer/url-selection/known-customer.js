@@ -33,11 +33,21 @@ async function injectAd() {
     ignoreIfPresent: true,
   });
 
-  // Run the URL selection operation to choose the button based on the user status
-  const opaqueURL = await window.sharedStorage.selectURL('known-customer', AD_URLS);
+  // Resolve the selectURL call to a fenced frame config only when it exists on the page
+  const resolveToConfig = typeof window.FencedFrameConfig !== 'undefined';
 
-  // Render the opaque URL into a fenced frame
-  document.getElementById('button-slot').src = opaqueURL;
+  // Run the URL selection operation to choose the button based on the user status
+  const selectedUrl = await window.sharedStorage.selectURL('known-customer', AD_URLS, {
+    resolveToConfig,
+  });
+
+  const adSlot = document.getElementById('button-slot');
+
+  if (resolveToConfig && selectedUrl instanceof FencedFrameConfig) {
+    adSlot.config = selectedUrl;
+  } else {
+    adSlot.src = selectedUrl;
+  }
 }
 
 injectAd();

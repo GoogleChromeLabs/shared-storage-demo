@@ -32,11 +32,21 @@ async function injectAd() {
     ignoreIfPresent: true,
   });
 
-  // Run the URL selection operation to choose an ad based on the frequency cap in shared storage
-  const opaqueURL = await window.sharedStorage.selectURL('creative-selection-by-frequency', AD_URLS);
+  // Resolve the selectURL call to a fenced frame config only when it exists on the page
+  const resolveToConfig = typeof window.FencedFrameConfig !== 'undefined';
 
-  // Render the opaque URL into a fenced frame
-  document.getElementById('ad-slot').src = opaqueURL;
+  // Run the URL selection operation to choose an ad based on the frequency cap in shared storage
+  const selectedUrl = await window.sharedStorage.selectURL('creative-selection-by-frequency', AD_URLS, {
+    resolveToConfig
+  });
+  
+  const adSlot = document.getElementById('ad-slot');
+
+  if (resolveToConfig && selectedUrl instanceof FencedFrameConfig) {
+    adSlot.config = selectedUrl;
+  } else {
+    adSlot.src = selectedUrl;
+  }
 }
 
 injectAd();

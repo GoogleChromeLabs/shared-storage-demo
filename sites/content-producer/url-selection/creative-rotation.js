@@ -54,11 +54,22 @@ async function injectAd() {
 
   const urls = DEMO_AD_CONFIG.map(({ url }) => ({ url }));
 
-  // Run the URL selection operation to determine the next ad that should be rendered
-  const opaqueURL = await window.sharedStorage.selectURL('creative-rotation', urls, { data: DEMO_AD_CONFIG });
+  // Resolve the selectURL call to a fenced frame config only when it exists on the page
+  const resolveToConfig = typeof window.FencedFrameConfig !== 'undefined';
 
-  // Render the opaque URL into a fenced frame
-  document.getElementById('ad-slot').src = opaqueURL;
+  // Run the URL selection operation to determine the next ad that should be rendered
+  const selectedUrl = await window.sharedStorage.selectURL('creative-rotation', urls, {
+    data: DEMO_AD_CONFIG,
+    resolveToConfig
+  });
+
+  const adSlot = document.getElementById('ad-slot');
+
+  if (resolveToConfig && selectedUrl instanceof FencedFrameConfig) {
+    adSlot.config = selectedUrl;
+  } else {
+    adSlot.src = selectedUrl;
+  }
 }
 
 injectAd();
