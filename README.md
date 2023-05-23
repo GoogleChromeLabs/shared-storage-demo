@@ -4,7 +4,7 @@ This demo shows some [Shared Storage API](https://developer.chrome.com/docs/priv
 
 The following use-cases have been added:
 
-- Frequency capping
+- Creative selection by frequency
 - A/B testing
 - Creative rotation
 - Known customer
@@ -13,15 +13,13 @@ The following use-cases have been added:
 
 Visit [https://shared-storage-demo.web.app](https://shared-storage-demo.web.app) to see the demo.
 
-## Enable the flag
-
-To run this demo, [follow the instructions](https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api) for enabling the Privacy Sandbox Ads APIs experiment flag at **chrome://flags/#privacy-sandbox-ads-apis**.
-
 ## Local development
 
 ### Setup HTTPS
 
-The ad rendered in a fenced frame must be served from an HTTPS origin. The ad rendered in a fenced frame must be served from an HTTPS origin, but the Firebase emulator [does not support HTTPS localhost](https://github.com/firebase/firebase-tools/issues/1908). Therefore, we will use `nginx` to setup a reverse proxy that takes the request at HTTPS 4337 port and proxies it to HTTP 8087.
+The ad rendered in a fenced frame must be served from an HTTPS origin. However the Firebase emulator [does not support HTTPS localhost](https://github.com/firebase/firebase-tools/issues/1908). Therefore, we will use `nginx` to setp up a reverse proxy.
+
+We need to setup nginx to respond to port 4337 that proxies content from port 3007
 
 #### Generate the certs with `mkcert`
 
@@ -53,7 +51,7 @@ http {
       proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
       proxy_set_header        X-Forwarded-Proto $scheme;
 
-      proxy_pass          http://localhost:8087/;
+      proxy_pass          http://localhost:3007/;
       proxy_read_timeout  90;
     }
   }
@@ -80,6 +78,10 @@ The above `nginx` configuration proxies `https://localhost:4437` to `http://loca
 ```
 npm run dev
 ```
+
+### Shared storage
+
+To run this demo, [follow the instructions](https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api) for enabling the Privacy Sandbox Ads APIs experiment flag at **chrome://flags/#privacy-sandbox-ads-apis**.
 
 And visit `http://localhost:8080` for the main page
 
