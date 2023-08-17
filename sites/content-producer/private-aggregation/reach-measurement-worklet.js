@@ -42,7 +42,7 @@ function convertContentIdToBucket(contentId) {
 class ReachMeasurementOperation {
   async run(data) {
     try {
-      const { contentId, debug_key } = data;
+      const { contentId, debugKey } = data;
 
       // Read from Shared Storage
       const key = 'has-reported-content';
@@ -61,8 +61,8 @@ class ReachMeasurementOperation {
       const value = 1 * SCALE_FACTOR;
 
       // Send an aggregatable report via the Private Aggregation API
-      privateAggregation.enableDebugMode({ debug_key });
-      privateAggregation.sendHistogramReport({ bucket, value });
+      privateAggregation.enableDebugMode({ debugKey });
+      privateAggregation.contributeToHistogram({ bucket, value });
 
       // Set the report submission status flag
       await sharedStorage.set(key, true);

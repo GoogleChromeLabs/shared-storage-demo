@@ -26,11 +26,11 @@ class PrivateAggregationTest {
     }
 
     if (Math.random() < DEBUG_MODE_CHANCE) {
-      const debug_key = BigInt(54321);
-      privateAggregation.enableDebugMode({ debug_key });
+      const debugKey = BigInt(54321);
+      privateAggregation.enableDebugMode({ debugKey });
     }
 
-    privateAggregation.sendHistogramReport({
+    privateAggregation.contributeToHistogram({
       bucket: BigInt(testKey),
       value: parseInt(testValue),
     });
