@@ -19,9 +19,9 @@ const ZEROES_FOR_PADDING = '00000000';
 
 function renderOutput({ bucketInBinary, valueInBinary }) {
   document.querySelector('.decoder__bucket--binary').innerHTML = bucketInBinary;
-  document.querySelector('.decoder__bucket--decimal').innerHTML = BigInt("0b" + bucketInBinary);
+  document.querySelector('.decoder__bucket--decimal').innerHTML = BigInt(`0b${bucketInBinary}`);
   document.querySelector('.decoder__value--binary').innerHTML = valueInBinary;
-  document.querySelector('.decoder__value--decimal').innerHTML = BigInt("0b" + valueInBinary);
+  document.querySelector('.decoder__value--decimal').innerHTML = BigInt(`0b${valueInBinary}`);
 }
 
 // Converts the number to a binary string
