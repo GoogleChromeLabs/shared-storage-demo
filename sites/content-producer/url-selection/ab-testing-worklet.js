@@ -30,5 +30,26 @@ class SelectURLOperation {
   }
 }
 
+function getBucketForTestingGroup(testingGroup) {
+  switch (testingGroup) {
+    case 'control':
+      return 0;
+    case 'experiment-a': 
+      return 1;
+    case 'experiment-b': 
+      return 2;
+  }
+}
+
+class ExperimentGroupReportingOperation {
+  async run() {
+    const experimentGroup = await sharedStorage.get('ab-testing-group');
+
+    const bucket = BigInt(getBucketForTestingGroup(experimentGroup));
+    privateAggregation.contributeToHistogram({ bucket, value: 1 });
+  }
+}
+
 // Register the operation as 'ab-testing'
 register('ab-testing', SelectURLOperation);
+register('experiment-group-reporting', ExperimentGroupReportingOperation);
