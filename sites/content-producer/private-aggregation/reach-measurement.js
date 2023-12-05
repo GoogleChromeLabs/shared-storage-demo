@@ -18,7 +18,7 @@ async function measureUniqueReach() {
   await window.sharedStorage.worklet.addModule('reach-measurement-worklet.js');
 
   // Run the reach measurement operation
-  await window.sharedStorage.run('reach-measurement', { data: { contentId: '1234', debug_key: 777n } });
+  await window.sharedStorage.run('reach-measurement', { data: { contentId: '1234', debugKey: 777n } });
 }
 
 measureUniqueReach();
