@@ -21,7 +21,7 @@ To run this demo, [follow the instructions](https://developer.chrome.com/docs/pr
 
 ### Setup HTTPS
 
-The ad rendered in a fenced frame must be served from an HTTPS origin. The ad rendered in a fenced frame must be served from an HTTPS origin, but the Firebase emulator [does not support HTTPS localhost](https://github.com/firebase/firebase-tools/issues/1908). Therefore, we will use `nginx` to setup a reverse proxy that takes the request at HTTPS 4337 port and proxies it to HTTP 8087.
+The ad rendered in a fenced frame must be served from an HTTPS origin, but the Firebase emulator [does not support HTTPS localhost](https://github.com/firebase/firebase-tools/issues/1908). Therefore, we will use `nginx` to setup a reverse proxy that takes the request at HTTPS 4337 port and proxies it to HTTP 8087.
 
 #### Generate the certs with `mkcert`
 
