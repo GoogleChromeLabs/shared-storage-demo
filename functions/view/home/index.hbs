@@ -20,18 +20,17 @@
       <a href='https://github.com/GoogleChromeLabs/shared-storage-demo' target='_blank'>GitHub</a>.</p>
 
     <h4>How to run the demo</h4>
-    <img src='https://wd.imgix.net/image/jc12tn44ghWnPdtbfjsmxHEaCUC3/ioMgXCp8CAyumX9Qqrgb.png?auto=format&w=700' />
-    <br />
-    <p>To run the URL selection demo,
-      <a
-        href='https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api'
-        target='_blank'
-      >follow the instructions</a>
-      for enabling the
-      <b>Privacy Sandbox Ads APIs</b>
-      experiment flag at
-      <b>chrome://flags/#privacy-sandbox-ads-apis</b> and <b>chrome://flags/#privacy-sandbox-enrollment-overrides</b>, using the following value for the latter:
-      <code>https://shared-storage-demo-content-producer.web.app,https://shared-storage-demo-publisher-a.web.app</code> 
+    <p>
+      To run the URL selection demo, enable the Privacy Sandbox experiment flags:
+      <ul>
+        <li>chrome://flags/#enable-fenced-frames</li>
+        <li>
+          chrome://flags/#privacy-sandbox-enrollment-overrides
+          <ul>
+            <li>with the value <code>https://shared-storage-demo-content-producer.web.app,https://shared-storage-demo-publisher-a.web.app</code></li>
+          </ul>
+        </li>
+      </ul>
       </p>
   </div>
   <section class='demo__card-container'>
