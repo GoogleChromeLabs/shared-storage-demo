@@ -13,7 +13,7 @@
     <h3>Shared storage - Creative rotation demo</h3>
   </div>
   <div class='demo__content'>
-    <iframe class='demo__dsp-iframe' src='{{{contentProducerUrl}}}/url-selection/creative-rotation.html'></iframe>
+    {{> creativeRotationDemoControls}}
     <card class='demo__description'>
       <h4>Description</h4>
       <p>
@@ -55,6 +55,13 @@
     </p>
   </card>
 </main>
+<script src="{{{contentProducerUrl}}}/url-selection/creative-rotation.js"></script>
 <script defer>
   checkSharedStorage()
+
+  // This button is for resetting the demo, and is not part of the core logic
+  function resetSharedStorage(rotationMode) {
+    window.sharedStorage.set('creative-rotation-mode', rotationMode);
+    console.log(`creative rotation mode set to ${rotationMode}`);
+  }
 </script>
