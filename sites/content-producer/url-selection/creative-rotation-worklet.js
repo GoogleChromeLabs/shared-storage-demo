@@ -16,6 +16,9 @@
 
 class SelectURLOperation {
   async run(urls, data) {
+    // Initially set the storage to sequential mode for the demo
+    await SelectURLOperation.seedStorage();
+
     // Read the rotation mode from Shared Storage
     const rotationMode = await sharedStorage.get('creative-rotation-mode');
 
@@ -76,6 +79,17 @@ class SelectURLOperation {
 
     console.log(JSON.stringify({ index, randomNumber, rotationMode }));
     return index;
+  }
+
+  // Set the mode to sequential and set the starting index to 0.
+  static async seedStorage() {
+    await sharedStorage.set('creative-rotation-mode', 'sequential', {
+      ignoreIfPresent: true,
+    });
+
+    await sharedStorage.set('creative-rotation-index', 0, {
+      ignoreIfPresent: true,
+    });
   }
 }
 

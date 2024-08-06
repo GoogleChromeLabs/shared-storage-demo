@@ -25,6 +25,7 @@ module.exports = (app, viewName) => {
     hbs.engine({
       extname: '.hbs',
       layoutsDir: path.join(__dirname + '/../../view'),
+      partialsDir: path.join(__dirname + '/../../view/partials')
     })
   );
 
