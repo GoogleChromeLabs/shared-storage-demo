@@ -105,3 +105,51 @@ card {
     background-color: var(--orange-9);
   }
 }
+
+.demo__controls-section {
+  width: 300px;
+}
+#ad-slot {
+  height: 250px;
+  border: none;
+}
+
+#button-slot {
+  height: 100px;
+  border: none;
+}
+
+.demo__card,
+.demo__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-2);
+  background: var(--surface-3);
+  border: 1px solid var(--surface-1);
+  padding: var(--size-3);
+  margin: var(--size-3) 0;
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-2);
+  margin-top: 0;
+}
+
+.demo__controls h5 {
+  margin-bottom: var(--size-2);
+}
+
+.demo__buttons-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.demo__button {
+  zoom: 90%;
+  /* max-width: var(--size-13); */
+  --_bg: linear-gradient(var(--indigo-5), var(--indigo-7));
+  --_border: var(--indigo-6);
+  --_text: var(--indigo-0);
+  --_ink-shadow: 0 1px 0 var(--indigo-9);
+  margin: 5px;
+}
