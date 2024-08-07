@@ -59,6 +59,7 @@ async function injectAd() {
   const selectedUrl = await window.sharedStorage.selectURL('ab-testing', urls, {
     data: groups,
     resolveToConfig,
+    keepAlive: true,
   });
 
   const adSlot = document.getElementById('ad-slot');
@@ -68,6 +69,9 @@ async function injectAd() {
   } else {
     adSlot.src = selectedUrl;
   }
+
+  // Run the reporting operation
+  await window.sharedStorage.run('experiment-group-reporting')
 }
 
 injectAd();
