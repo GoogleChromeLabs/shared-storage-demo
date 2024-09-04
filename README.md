@@ -19,7 +19,7 @@ Visit [https://shared-storage-demo.web.app](https://shared-storage-demo.web.app)
 
 The ad rendered in a fenced frame must be served from an HTTPS origin. However the Firebase emulator [does not support HTTPS localhost](https://github.com/firebase/firebase-tools/issues/1908). Therefore, we will use `nginx` to setp up a reverse proxy.
 
-We need to setup nginx to respond to port 4337 that proxies content from port 3007
+We need to setup nginx to respond to port 4437 that proxies content from port 3007.
 
 #### Generate the certs with `mkcert`
 
@@ -61,7 +61,7 @@ http {
 4. Stop the `nginx` server with `nginx -s stop`
 5. Restart the `nginx` server with `nginx`
 
-The above `nginx` configuration proxies `https://localhost:4437` to `http://localhost:8087` (Content producer server).
+The above `nginx` configuration proxies `https://localhost:4437` to `http://localhost:3007` (Content producer server).
 
 ### Setup Firebase
 
@@ -75,15 +75,21 @@ The above `nginx` configuration proxies `https://localhost:4437` to `http://loca
 
 ### Start emulator
 
-```
+```bash
 npm run dev
 ```
 
 ### Shared storage
 
-To run this demo, [follow the instructions](https://developer.chrome.com/docs/privacy-sandbox/shared-storage/#try-the-shared-storage-api) for enabling the Privacy Sandbox Ads APIs experiment flag at **chrome://flags/#privacy-sandbox-ads-apis**.
+To run this demo, enable the experiment flag **chrome://flags/#privacy-sandbox-enrollment-overrides**.
 
-And visit `http://localhost:8080` for the main page
+Then, [open Google Chrome from the command line](https://www.chromium.org/developers/how-tos/run-chromium-with-flags/) with the additional flags below to disable the need for attestations when running locally.
+
+```
+--enable-privacy-sandbox-ads-apis --disable-features=EnforcePrivacySandboxAttestations
+```
+
+And visit `http://localhost:3000` for the main page
 
 ### Deploy code
 
