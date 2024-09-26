@@ -42,7 +42,9 @@ function getRandomExperiment() {
 
 async function injectAd() {
   // Load the worklet module
-  await window.sharedStorage.worklet.addModule('ab-testing-worklet.js');
+  const abTestingWorklet = await window.sharedStorage.createWorklet(
+    'ab-testing-worklet.js'
+  );
 
   // Set the initial value in the storage to a random experiment group
   window.sharedStorage.set('ab-testing-group', getRandomExperiment(), {
@@ -56,7 +58,7 @@ async function injectAd() {
   const resolveToConfig = typeof window.FencedFrameConfig !== 'undefined';
 
   // Run the URL selection operation to select an ad based on the experiment group in shared storage
-  const selectedUrl = await window.sharedStorage.selectURL('ab-testing', urls, {
+  const selectedUrl = await abTestingWorklet.selectURL('ab-testing', urls, {
     data: groups,
     resolveToConfig,
     keepAlive: true,
@@ -71,7 +73,7 @@ async function injectAd() {
   }
 
   // Run the reporting operation
-  await window.sharedStorage.run('experiment-group-reporting')
+  await abTestingWorklet.run('experiment-group-reporting')
 }
 
 injectAd();
