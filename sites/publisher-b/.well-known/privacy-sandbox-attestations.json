@@ -1,0 +1,32 @@
+{
+    "privacy_sandbox_api_attestations": [
+      {
+        "attestation_parser_version": "2",
+        "attestation_version": "1",
+        "privacy_policy": [
+          "https://policies.google.com/privacy"
+        ],
+        "ownership_token": "jaNybzmPQosoLJSp9OiOlY3UZfFHCMAsKukhACJaEulhPgh8OhlnijY9zKdcUn7P",
+        "issued_seconds_since_epoch": 1727275740,
+        "enrollment_id": "G7ZNZ",
+        "enrollment_site": "https://shared-storage-demo-publisher-b.web.app/",
+        "platform_attestations": [
+          {
+            "platform": "chrome",
+            "attestations": {
+              "shared_storage_api": {
+                "ServiceNotUsedForIdentifyingUserAcrossSites": true
+              },
+              "private_aggregation_api": {
+                "ServiceNotUsedForIdentifyingUserAcrossSites": true
+              }
+            }
+          },
+          {
+            "platform": "android",
+            "attestations": {}
+          }
+        ]
+      }
+    ]
+}
