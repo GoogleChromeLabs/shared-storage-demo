@@ -1,0 +1,26 @@
+<div class="demo__controls-section">    
+  <fencedframe id="ad-slot" mode="opaque-ads"></fencedframe>
+  <div class="demo__controls">
+    <h5>Demo control</h5>
+    <div class="demo__buttons-container">
+      <button
+        class="mdl-button mdl-js-button mdl-button--raised demo__button"
+        onclick="setRotationMode('sequential')"
+      >
+        Set rotation mode to <br />"Sequential"
+      </button>
+      <button
+        class="mdl-button mdl-js-button mdl-button--raised demo__button"
+        onclick="setRotationMode('even-distribution')"
+      >
+        Set rotation mode to <br />"Even distribution"<br />(~33% / ~33% / ~33%)
+      </button>
+      <button
+        class="mdl-button mdl-js-button mdl-button--raised demo__button"
+        onclick="setRotationMode('weighted-distribution')"
+      >
+        Set rotation mode to <br />"Weighted distribution"<br />(70% / 20% / 10%)
+      </button>
+    </div>
+  </div>
+</div>

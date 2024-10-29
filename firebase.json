@@ -70,6 +70,14 @@
             {
               "key": "Supports-Loading-Mode",
               "value": "fenced-frame"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Shared-Storage-Cross-Origin-Worklet-Allowed",
+              "value": "?1"
             }
           ]
         }
