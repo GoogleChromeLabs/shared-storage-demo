@@ -1,3 +1,11 @@
+<p><b>No longer maintained</b>.</p>
+
+<p>Please see our <a href="https://privacysandbox.google.com/blog/update-on-plans-for-privacy-sandbox-technologies">Update on Plans for Privacy Sandbox Technologies</a> and <a href="https://privacysandbox.google.com/overview/status">Privacy Sandbox feature status</a> for more information about the status of individual APIs and platform features.</p>
+
+<p>As the Shared Storage and Private Aggregation APIs have been phased out, this demo is no longer supported or maintained.</p>
+
+<br>
+
 # Shared storage demo
 
 This demo shows some [Shared Storage API](https://developer.chrome.com/docs/privacy-sandbox/shared-storage/) use cases.
@@ -8,10 +16,6 @@ The following use-cases have been added:
 - A/B testing
 - Creative rotation
 - Known customer
-
-## Live demo
-
-Visit [https://shared-storage-demo.web.app](https://shared-storage-demo.web.app) to see the demo.
 
 ## Local development
 
